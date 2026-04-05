@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/@ap666/office-word/dist/typeof-Dz1Ap89p.js"],
+  "sourcesContent": ["//#region ../../node_modules/@babel/runtime/helpers/esm/typeof.js\nfunction e(t) {\n\t\"@babel/helpers - typeof\";\n\treturn e = typeof Symbol == \"function\" && typeof Symbol.iterator == \"symbol\" ? function(e) {\n\t\treturn typeof e;\n\t} : function(e) {\n\t\treturn e && typeof Symbol == \"function\" && e.constructor === Symbol && e !== Symbol.prototype ? \"symbol\" : typeof e;\n\t}, e(t);\n}\n//#endregion\nexport { e as t };\n"],
+  "mappings": ";AACA,SAAS,EAAE,GAAG;AACb;AACA,SAAO,IAAI,OAAO,UAAU,cAAc,OAAO,OAAO,YAAY,WAAW,SAASA,IAAG;AAC1F,WAAO,OAAOA;AAAA,EACf,IAAI,SAASA,IAAG;AACf,WAAOA,MAAK,OAAO,UAAU,cAAcA,GAAE,gBAAgB,UAAUA,OAAM,OAAO,YAAY,WAAW,OAAOA;AAAA,EACnH,GAAG,EAAE,CAAC;AACP;",
+  "names": ["e"]
+}

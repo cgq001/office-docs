@@ -1,0 +1,63 @@
+:root {
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #115e59;
+  --vp-c-brand-3: #134e4a;
+  --vp-c-brand-soft: rgba(15, 118, 110, 0.14);
+}
+
+.office-demo-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 30%),
+    linear-gradient(180deg, #f3f8f7 0%, #ffffff 100%);
+}
+
+.dark .office-demo-page {
+  background:
+    radial-gradient(circle at top left, rgba(45, 212, 191, 0.12), transparent 30%),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
+.office-demo-page__main {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.office-demo-page__main--full {
+  max-width: none;
+}
+
+.office-editor-demo__frame {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--vp-c-bg);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.office-editor-demo__frame .rich-text-editor {
+  min-height: calc(100vh - 48px);
+}
+
+.office-editor-demo__state {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 48px);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--vp-c-text-2);
+}
+
+.office-editor-demo__state--error {
+  gap: 8px;
+  padding: 24px;
+  color: #b91c1c;
+}
+
+@media (max-width: 960px) {
+  .office-demo-page__main {
+    padding: 12px;
+  }
+}
