@@ -21,6 +21,7 @@ export default defineConfig({
           items: [
             { text: '介绍', link: '/office-word/introduction' },
             { text: '快速开始', link: '/office-word/getting-started' },
+            { text: '协同编辑', link: '/office-word/collaboration' },
             { text: 'API', link: '/office-word/api' },
             { text: 'Demo 演示', link: '/office-word/demo' },
             { text: '在线演示', link: '/office-word/playground' },
@@ -30,7 +31,7 @@ export default defineConfig({
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/' }
+      { icon: 'github', link: 'https://github.com/cgq001/office-docs' }
     ],
     footer: {
       message: 'Built with VitePress',

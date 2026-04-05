@@ -24,6 +24,33 @@ outline: deep
 - 默认值：`''`
 - 说明：空内容时的占位文案
 
+### `collaboration`
+
+- 类型：`RichTextEditorCollaborationOptions | null`
+- 默认值：`null`
+- 说明：启用可选的 Yjs 协同编辑模式
+
+```ts
+type RichTextEditorCollaborationOptions = {
+  document: {
+    getXmlFragment: (field: string) => unknown
+  }
+  field?: string
+  provider?: {
+    awareness: {
+      states: Map<number, unknown>
+      on: (event: 'update', callback: (...args: unknown[]) => void) => void
+      setLocalStateField: (field: string, value: unknown) => void
+    }
+  } | null
+  user?: {
+    name: string
+    color: string
+    [key: string]: unknown
+  } | null
+}
+```
+
 ## 事件
 
 ### `update:modelValue`
@@ -35,6 +62,12 @@ outline: deep
 
 - 参数：`JSONContent`
 - 说明：内容变更时额外抛出的事件，适合业务侧做保存、联动、审计等逻辑
+
+补充说明：
+
+- 单人模式下，`modelValue` 是正常双向数据源
+- 协同模式下，Yjs fragment 才是唯一真实数据源
+- 协同模式仍然会持续抛出 JSON 快照，方便业务观察和调试
 
 ## 实例 API
 
@@ -246,6 +279,7 @@ type RichTextEditorFilePayload = {
 
 ```ts
 import type {
+  RichTextEditorCollaborationOptions,
   RichTextEditorFilePayload,
   RichTextEditorImageExportOptions,
   RichTextEditorImagePayload,
