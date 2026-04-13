@@ -30,6 +30,71 @@ outline: deep
 - 默认值：`'left'`
 - 说明：大纲面板位置
 
+### `messages`
+
+- 类型：`Partial<Record<string, string>> | null`
+- 默认值：`null`
+- 说明：覆盖组件内置 UI 文案，未传时默认使用中文
+
+示例：
+
+```vue
+<RichTextEditor
+  v-model="content"
+  :messages="{
+    'insert.localFile': 'Attachment',
+    'export.label': 'Download',
+  }"
+/>
+```
+
+可覆盖的 `messages` key：
+
+- `insert.label`
+- `insert.section.general`
+- `insert.section.apps`
+- `insert.section.external`
+- `insert.image`
+- `insert.video`
+- `insert.table`
+- `insert.localFile`
+- `insert.columns`
+- `insert.highlightBlock`
+- `insert.date`
+- `insert.codeBlock`
+- `insert.formula`
+- `insert.blockquote`
+- `insert.emoji`
+- `insert.link`
+- `insert.divider`
+- `insert.countdown`
+- `insert.markdownImport`
+- `export.label`
+- `export.pdf`
+- `export.pdf.loading`
+- `export.html`
+- `export.html.loading`
+- `export.image`
+- `export.image.loading`
+- `print.label`
+- `print.loading`
+- `quote.apply`
+- `quote.cancel`
+- `quote.borderColor`
+- `quote.backgroundColor`
+- `outline.label`
+- `outline.collapse`
+- `outline.empty.description`
+- `outline.empty.tip`
+- `status.wordCountUnit`
+- `status.presentation.enter`
+- `status.presentation.exit`
+- `status.fullscreen.enter`
+- `status.fullscreen.exit`
+- `countdown.selectTime`
+- `countdown.settingsTitle`
+- `formula.insertTitle`
+
 ### `enabledExportItems`
 
 - 类型：`('pdf' | 'html' | 'image' | 'print')[] | null`
@@ -94,17 +159,6 @@ type RichTextEditorCollaborationOptions = {
 - 不传时，内置选项默认全部可见、可用
 - 一旦传入数组，只有数组中声明的项会被保留
 
-示例：
-
-```vue
-<RichTextEditor
-  v-model="content"
-  :enabled-export-items="['html', 'image']"
-  :enabled-insert-menu-items="['image', 'local-file', 'blockquote']"
-  :enabled-toolbar-actions="['blockquote']"
-/>
-```
-
 ## 事件
 
 ### `update:modelValue`
@@ -127,29 +181,9 @@ type RichTextEditorCollaborationOptions = {
 - 参数：当前文件块数据
 - 说明：用户点击本地文件块下载按钮时触发
 
-补充说明：
-
-- 单人模式下，`modelValue` 是正常双向数据源
-- 协同模式下，Yjs fragment 才是唯一真实数据源
-- 协同模式仍然会持续抛出 JSON 快照，方便业务观察和调试
-
 ## 实例 API
 
 组件通过 Vue `ref` 对外暴露实例方法。
-
-```vue
-<script setup lang="ts">
-import { ref } from 'vue'
-import { RichTextEditor } from '@ap666/office-word'
-import type { RichTextEditorInstance } from '@ap666/office-word'
-
-const editorRef = ref<RichTextEditorInstance | null>(null)
-</script>
-
-<template>
-  <RichTextEditor ref="editorRef" />
-</template>
-```
 
 ### 方法总览
 
@@ -165,154 +199,6 @@ const editorRef = ref<RichTextEditorInstance | null>(null)
 | `openLocalFilePicker()` | `void` | 打开本地文件选择器 |
 | `focus()` | `void` | 聚焦编辑器 |
 | `getJSON()` | `JSONContent \| null` | 获取当前 JSON 内容 |
-
-## 预览模式
-
-```vue
-<template>
-  <RichTextEditor
-    v-model="content"
-    mode="preview"
-    outline-placement="right"
-  />
-</template>
-```
-
-行为说明：
-
-- 工具栏隐藏
-- 编辑禁用
-- 支持左右两侧大纲
-- 窄屏下会自动缩放页面，提升阅读体验
-
-## 导出能力
-
-### `exportPdf()`
-
-```ts
-async function handleExportPdf() {
-  const blob = await editorRef.value?.exportPdf()
-  if (!blob) return
-
-  const url = URL.createObjectURL(blob)
-  const link = document.createElement('a')
-  link.href = url
-  link.download = 'document.pdf'
-  link.click()
-  URL.revokeObjectURL(url)
-}
-```
-
-### `exportImage(options?)`
-
-```ts
-async function handleExportImage() {
-  const blob = await editorRef.value?.exportImage({
-    type: 'image/png',
-    quality: 1,
-  })
-  if (!blob) return
-
-  const url = URL.createObjectURL(blob)
-  window.open(url, '_blank')
-}
-```
-
-```ts
-type RichTextEditorImageExportOptions = {
-  type?: 'image/png' | 'image/jpeg'
-  quality?: number
-}
-```
-
-### `exportHtml()`
-
-```ts
-function handleExportHtml() {
-  const html = editorRef.value?.exportHtml()
-  if (!html) return
-
-  console.log(html)
-}
-```
-
-## 外部上传后回填
-
-推荐接入方式：
-
-1. 业务侧自己调用上传接口
-2. 上传完成后拿到最终可访问地址
-3. 调用编辑器实例方法把内容插入进去
-
-### 插入图片
-
-```ts
-async function uploadImage(file: File) {
-  const imageUrl = await yourUploadApi(file)
-
-  editorRef.value?.insertImage({
-    src: imageUrl,
-    name: file.name,
-    alt: file.name,
-    description: '',
-  })
-}
-```
-
-也支持一次插入多张图片，当前最多 `4` 张：
-
-```ts
-editorRef.value?.insertImage([
-  { src: 'https://cdn.example.com/a.png', name: 'a.png' },
-  { src: 'https://cdn.example.com/b.png', name: 'b.png' },
-])
-```
-
-### 插入视频
-
-```ts
-async function uploadVideo(file: File) {
-  const videoUrl = await yourUploadApi(file)
-
-  editorRef.value?.insertVideo({
-    src: videoUrl,
-    name: file.name,
-    mimeType: file.type || 'video/mp4',
-    description: 'video description',
-  })
-}
-```
-
-### 插入文件
-
-```ts
-async function uploadFile(file: File) {
-  const fileUrl = await yourUploadApi(file)
-
-  editorRef.value?.insertFile({
-    url: fileUrl,
-    name: file.name,
-    displayMode: 'text',
-  })
-}
-```
-
-### 插入本地文件块
-
-```ts
-editorRef.value?.insertLocalFile({
-  url: 'https://cdn.example.com/files/demo.txt',
-  name: 'demo.txt',
-  size: 2048,
-  mimeType: 'text/plain',
-})
-```
-
-### 打开内置本地文件选择器
-
-```ts
-editorRef.value?.openLocalFilePicker()
-```
 
 ## 类型导入
 

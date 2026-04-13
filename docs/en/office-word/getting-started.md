@@ -35,6 +35,26 @@ const content = ref<JSONContent | null>(null)
 
 The package imports its own styles from the entry, so no extra CSS import is required in the default setup.
 
+## Messages Override
+
+The editor UI is Chinese by default. Use `messages` to override only the labels you need:
+
+```vue
+<RichTextEditor
+  v-model="content"
+  :messages="{
+    'insert.localFile': 'Attachment',
+    'export.label': 'Download',
+  }"
+/>
+```
+
+This is useful when:
+
+- you want partial English labels without rebuilding the entire editor UI
+- you need product-specific wording
+- you want to gradually localize only selected actions
+
 ## Preview Mode
 
 ```vue
