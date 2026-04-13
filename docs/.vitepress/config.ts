@@ -44,8 +44,7 @@ export default defineConfig({
         siteTitle: 'Office Editor Docs',
         nav: [
           { text: '首页', link: '/' },
-          { text: 'Office Word', link: '/office-word/introduction' },
-          { text: '在线演示', link: '/office-word/playground' }
+          { text: 'Office Word', link: '/office-word/introduction' }
         ],
         sidebar: {
           '/office-word/': officeWordSidebarZh
@@ -71,8 +70,7 @@ export default defineConfig({
         siteTitle: 'Office Editor Docs',
         nav: [
           { text: 'Home', link: '/en/' },
-          { text: 'Office Word', link: '/en/office-word/introduction' },
-          { text: 'Playground', link: '/en/office-word/playground' }
+          { text: 'Office Word', link: '/en/office-word/introduction' }
         ],
         sidebar: {
           '/en/office-word/': officeWordSidebarEn
