@@ -1,73 +1,52 @@
 {
-  "hash": "90547520",
-  "configHash": "36f8aaf8",
+  "hash": "d7c3e8b9",
+  "configHash": "63364062",
   "lockfileHash": "697cfdd6",
-  "browserHash": "7bc9ccc3",
+  "browserHash": "2b4ec9da",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "3906d29a",
+      "fileHash": "c05b2238",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "26e2a3c0",
+      "fileHash": "b7a0b3da",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "55e90a2a",
-      "needsInterop": false
-    },
-    "vitepress > @vueuse/integrations/useFocusTrap": {
-      "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
-      "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "5ef75cad",
-      "needsInterop": false
-    },
-    "vitepress > mark.js/src/vanilla.js": {
-      "src": "../../../../node_modules/mark.js/src/vanilla.js",
-      "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "d523a4d4",
-      "needsInterop": false
-    },
-    "vitepress > minisearch": {
-      "src": "../../../../node_modules/minisearch/dist/es/index.js",
-      "file": "vitepress___minisearch.js",
-      "fileHash": "98099c94",
+      "fileHash": "aea2624d",
       "needsInterop": false
     },
     "@ap666/office-word": {
       "src": "../../../../node_modules/@ap666/office-word/dist/index.js",
       "file": "@ap666_office-word.js",
-      "fileHash": "8adece1b",
+      "fileHash": "fc69bc6c",
       "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-URVHZSMY": {
+      "file": "chunk-URVHZSMY.js"
+    },
+    "html2canvas-Bwmq6fGh-ADNEBVR7": {
+      "file": "html2canvas-Bwmq6fGh-ADNEBVR7.js"
+    },
     "purify.es-B5ixYH9L-7APK5GQN": {
       "file": "purify__es-B5ixYH9L-7APK5GQN.js"
     },
     "index.es-C4X5YiRo-6OLPPAH4": {
       "file": "index__es-C4X5YiRo-6OLPPAH4.js"
     },
-    "jspdf.es.min-ByaXFVjc-ZY63TG6S": {
-      "file": "jspdf__es__min-ByaXFVjc-ZY63TG6S.js"
+    "jspdf.es.min-ByaXFVjc-IJC2XXHL": {
+      "file": "jspdf__es__min-ByaXFVjc-IJC2XXHL.js"
     },
     "chunk-INAZFQXU": {
       "file": "chunk-INAZFQXU.js"
-    },
-    "chunk-KNUCHIUH": {
-      "file": "chunk-KNUCHIUH.js"
-    },
-    "chunk-URVHZSMY": {
-      "file": "chunk-URVHZSMY.js"
-    },
-    "html2canvas-Bwmq6fGh-ADNEBVR7": {
-      "file": "html2canvas-Bwmq6fGh-ADNEBVR7.js"
     },
     "chunk-CYLA5VZ5": {
       "file": "chunk-CYLA5VZ5.js"

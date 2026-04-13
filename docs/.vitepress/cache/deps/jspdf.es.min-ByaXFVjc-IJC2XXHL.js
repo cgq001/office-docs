@@ -18591,4 +18591,4 @@ export {
   Z as default,
   Z as jsPDF
 };
-//# sourceMappingURL=jspdf.es.min-ByaXFVjc-ZY63TG6S.js.map
+//# sourceMappingURL=jspdf.es.min-ByaXFVjc-IJC2XXHL.js.map

@@ -130063,7 +130063,7 @@ var Lb = defineComponent({
     async function qr2() {
       let e11 = await M2();
       if (!e11) return null;
-      let { jsPDF: t } = await import("./jspdf.es.min-ByaXFVjc-ZY63TG6S.js"), n2 = new t({
+      let { jsPDF: t } = await import("./jspdf.es.min-ByaXFVjc-IJC2XXHL.js"), n2 = new t({
         orientation: e11.width > e11.height ? "landscape" : "portrait",
         unit: "px",
         format: [e11.width, e11.height],
