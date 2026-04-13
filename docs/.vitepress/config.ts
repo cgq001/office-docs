@@ -12,7 +12,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: 'Office Word', link: '/office-word/introduction' },
-      { text: '在线演示', link: '/office-word/playground' }
+      // { text: '在线演示', link: '/office-word/playground' }
     ],
     sidebar: {
       '/office-word/': [
