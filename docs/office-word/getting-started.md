@@ -11,7 +11,16 @@ outline: deep
 npm install @ap666/office-word
 ```
 
-如果业务侧没有自动安装 peer dependencies，建议按同版本段补齐 `Vue 3`、`Tiptap 3` 相关依赖。
+如果你的包管理器不会自动安装 peer dependencies，还需要补齐运行时依赖：
+
+```bash
+npm install vue @tiptap/core @tiptap/vue-3 @tiptap/pm @tiptap/starter-kit @tiptap/extension-placeholder @tiptap/extension-code-block @tiptap/extension-code-block-lowlight @tiptap/extension-collaboration @tiptap/extension-collaboration-caret @tiptap/extension-font-family @tiptap/extension-subscript @tiptap/extension-superscript @tiptap/extension-table @tiptap/extension-table-cell @tiptap/extension-table-header @tiptap/extension-table-row @tiptap/extension-task-item @tiptap/extension-task-list @tiptap/extension-text-style @tiptap/extension-underline @tiptap/y-tiptap lowlight y-prosemirror yjs
+```
+
+说明：
+
+- 组件入口已经自动引入样式
+- 默认接入不需要额外手动导入 CSS
 
 ## 最小接入
 
@@ -28,11 +37,6 @@ const content = ref<JSONContent | null>(null)
   <RichTextEditor v-model="content" />
 </template>
 ```
-
-说明：
-
-- 组件入口已经自动引入样式，默认接入不需要额外手动导入 CSS
-- `v-model` 绑定的是 `Tiptap JSONContent`
 
 ## 基础接入示例
 
@@ -66,9 +70,48 @@ function handleChange(value: JSONContent) {
 </template>
 ```
 
+## 预览模式
+
+当你只想做文档阅读展示时，可以切换到 `preview` 模式：
+
+```vue
+<template>
+  <RichTextEditor
+    v-model="content"
+    mode="preview"
+    outline-placement="right"
+  />
+</template>
+```
+
+说明：
+
+- 预览模式下工具栏会隐藏
+- 编辑行为会禁用
+- 大纲可以放在左侧或右侧
+- 窄屏下会自动缩放页面，提升手机阅读体验
+
+## 白名单裁剪
+
+如果你希望只保留部分导出项、插入项或工具栏动作，可以通过白名单 Props 控制：
+
+```vue
+<RichTextEditor
+  v-model="content"
+  :enabled-export-items="['html', 'image']"
+  :enabled-insert-menu-items="['image', 'local-file', 'blockquote']"
+  :enabled-toolbar-actions="['blockquote']"
+/>
+```
+
+规则：
+
+- 不传这些 Props 时，内置项默认全部开启
+- 一旦传了数组，只有数组中声明的项目会保留
+
 ## 协同模式快速接入
 
-如果你要启用多人协同，需要额外接入 `Yjs` 文档和 provider。
+如果你要启用多人协同，需要额外接入 `Yjs` 文档和 provider：
 
 ```vue
 <script setup lang="ts">
@@ -122,6 +165,7 @@ const content = ref<JSONContent | null>(null)
 如果目标是只读展示，可以根据业务场景选择：
 
 - 保存 JSON 后重新加载到编辑器只读模式
+- 用 `mode="preview"` 做阅读态文档展示
 - 调用 `exportHtml()` 生成 HTML 做只读展示
 - 调用 `exportPdf()` 或 `exportImage()` 做归档和分享
 
@@ -137,7 +181,7 @@ const content = ref<JSONContent | null>(null)
 
 ### 为什么推荐使用 `ref` 调实例方法
 
-因为导出、插入图片、插入视频、插入文件这类动作本质上都是命令式调用，不适合全部塞进声明式 Props。
+因为导出、插入图片、插入视频、插入文件、本地文件等动作本质上都是命令式调用，不适合全部塞进声明式 Props。
 
 ### 为什么上传不直接做进组件里
 

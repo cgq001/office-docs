@@ -18,6 +18,36 @@ outline: deep
 - 默认值：`true`
 - 说明：是否允许编辑
 
+### `mode`
+
+- 类型：`'edit' | 'preview'`
+- 默认值：`'edit'`
+- 说明：编辑器模式，`preview` 用于只读预览壳层
+
+### `outlinePlacement`
+
+- 类型：`'left' | 'right'`
+- 默认值：`'left'`
+- 说明：大纲面板位置
+
+### `enabledExportItems`
+
+- 类型：`('pdf' | 'html' | 'image' | 'print')[] | null`
+- 默认值：`null`
+- 说明：导出菜单白名单；为空时默认全部可用
+
+### `enabledInsertMenuItems`
+
+- 类型：`('image' | 'video' | 'table' | 'local-file' | 'columns' | 'highlight-block' | 'date' | 'code-block' | 'formula' | 'blockquote' | 'emoji' | 'link' | 'divider' | 'countdown' | 'markdown-import')[] | null`
+- 默认值：`null`
+- 说明：插入菜单白名单；为空时默认全部可用
+
+### `enabledToolbarActions`
+
+- 类型：`('blockquote')[] | null`
+- 默认值：`null`
+- 说明：工具栏动作白名单；为空时默认全部可用
+
 ### `placeholder`
 
 - 类型：`string`
@@ -51,6 +81,30 @@ type RichTextEditorCollaborationOptions = {
 }
 ```
 
+## 白名单规则
+
+以下 Props 都是白名单模式：
+
+- `enabledExportItems`
+- `enabledInsertMenuItems`
+- `enabledToolbarActions`
+
+规则如下：
+
+- 不传时，内置选项默认全部可见、可用
+- 一旦传入数组，只有数组中声明的项会被保留
+
+示例：
+
+```vue
+<RichTextEditor
+  v-model="content"
+  :enabled-export-items="['html', 'image']"
+  :enabled-insert-menu-items="['image', 'local-file', 'blockquote']"
+  :enabled-toolbar-actions="['blockquote']"
+/>
+```
+
 ## 事件
 
 ### `update:modelValue`
@@ -62,6 +116,16 @@ type RichTextEditorCollaborationOptions = {
 
 - 参数：`JSONContent`
 - 说明：内容变更时额外抛出的事件，适合业务侧做保存、联动、审计等逻辑
+
+### `local-file-upload`
+
+- 参数：本地文件信息对象
+- 说明：用户从编辑器内部文件选择器选中文件并插入后触发
+
+### `local-file-download`
+
+- 参数：当前文件块数据
+- 说明：用户点击本地文件块下载按钮时触发
 
 补充说明：
 
@@ -97,8 +161,29 @@ const editorRef = ref<RichTextEditorInstance | null>(null)
 | `insertImage(payload \| payload[])` | `boolean` | 插入外部上传后的图片 |
 | `insertVideo(payload)` | `boolean` | 插入外部上传后的视频 |
 | `insertFile(payload)` | `boolean` | 插入外部上传后的文件 |
+| `insertLocalFile(payload)` | `boolean` | 插入本地文件块 |
+| `openLocalFilePicker()` | `void` | 打开本地文件选择器 |
 | `focus()` | `void` | 聚焦编辑器 |
 | `getJSON()` | `JSONContent \| null` | 获取当前 JSON 内容 |
+
+## 预览模式
+
+```vue
+<template>
+  <RichTextEditor
+    v-model="content"
+    mode="preview"
+    outline-placement="right"
+  />
+</template>
+```
+
+行为说明：
+
+- 工具栏隐藏
+- 编辑禁用
+- 支持左右两侧大纲
+- 窄屏下会自动缩放页面，提升阅读体验
 
 ## 导出能力
 
@@ -118,12 +203,6 @@ async function handleExportPdf() {
 }
 ```
 
-适用场景：
-
-- 下载文档
-- 上传到服务端
-- 打印前归档
-
 ### `exportImage(options?)`
 
 ```ts
@@ -138,8 +217,6 @@ async function handleExportImage() {
   window.open(url, '_blank')
 }
 ```
-
-可选参数：
 
 ```ts
 type RichTextEditorImageExportOptions = {
@@ -158,13 +235,6 @@ function handleExportHtml() {
   console.log(html)
 }
 ```
-
-适用场景：
-
-- 服务端落库
-- 邮件渲染
-- 预览页渲染
-- 二次加工
 
 ## 外部上传后回填
 
@@ -189,19 +259,6 @@ async function uploadImage(file: File) {
 }
 ```
 
-图片参数：
-
-```ts
-type RichTextEditorImagePayload = {
-  src: string
-  alt?: string
-  name?: string
-  description?: string
-  link?: string
-  rotation?: number
-}
-```
-
 也支持一次插入多张图片，当前最多 `4` 张：
 
 ```ts
@@ -221,24 +278,8 @@ async function uploadVideo(file: File) {
     src: videoUrl,
     name: file.name,
     mimeType: file.type || 'video/mp4',
-    description: '视频说明',
-    align: 'center',
-    widthPercent: 100,
+    description: 'video description',
   })
-}
-```
-
-视频参数：
-
-```ts
-type RichTextEditorVideoPayload = {
-  src: string
-  name?: string
-  description?: string
-  mimeType?: string
-  align?: 'left' | 'center' | 'right'
-  widthPercent?: number
-  height?: number
 }
 ```
 
@@ -252,39 +293,38 @@ async function uploadFile(file: File) {
     url: fileUrl,
     name: file.name,
     displayMode: 'text',
-    align: 'left',
   })
 }
 ```
 
-文件参数：
+### 插入本地文件块
 
 ```ts
-type RichTextEditorFilePayload = {
-  url: string
-  name: string
-  displayMode?: 'text' | 'card' | 'preview'
-  align?: 'left' | 'center' | 'right'
-  widthPercent?: number
-  height?: number
-}
+editorRef.value?.insertLocalFile({
+  url: 'https://cdn.example.com/files/demo.txt',
+  name: 'demo.txt',
+  size: 2048,
+  mimeType: 'text/plain',
+})
 ```
 
-说明：
+### 打开内置本地文件选择器
 
-- 当前 `insertFile()` 会以文件入口块的形式插入内容
-- 如果后续需要独立的文件卡片块，可以继续扩展，但不影响当前外部上传接入方式
+```ts
+editorRef.value?.openLocalFilePicker()
+```
 
 ## 类型导入
 
 ```ts
 import type {
   RichTextEditorCollaborationOptions,
+  RichTextEditorCollaborationProvider,
+  RichTextEditorCollaborationUser,
   RichTextEditorFilePayload,
   RichTextEditorImageExportOptions,
   RichTextEditorImagePayload,
   RichTextEditorInstance,
-  RichTextEditorProps,
   RichTextEditorVideoPayload,
 } from '@ap666/office-word'
 ```
