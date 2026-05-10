@@ -5,7 +5,7 @@ outline: deep
 
 # Office Word
 
-`@ap666/office-word` is a Vue 3 and Tiptap 3 based document-style rich text editor component designed to provide an online-document editing experience while keeping business-side integration flexible.
+`@norio-office/rich-text` is a Vue 3 and Tiptap 3 based document-style rich text editor component designed to provide an online-document editing experience while keeping business-side integration flexible.
 
 ## Suitable Scenarios
 

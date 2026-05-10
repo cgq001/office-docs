@@ -8,7 +8,7 @@ outline: deep
 ## 安装
 
 ```bash
-npm install @ap666/office-word
+npm install @norio-office/rich-text
 ```
 
 如果你的包管理器不会自动安装 peer dependencies，还需要补齐运行时依赖：
@@ -28,7 +28,7 @@ npm install vue @tiptap/core @tiptap/vue-3 @tiptap/pm @tiptap/starter-kit @tipta
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { JSONContent } from '@tiptap/core'
-import { RichTextEditor } from '@ap666/office-word'
+import { RichTextEditor } from '@norio-office/rich-text'
 
 const content = ref<JSONContent | null>(null)
 </script>
@@ -44,7 +44,7 @@ const content = ref<JSONContent | null>(null)
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { JSONContent } from '@tiptap/core'
-import { RichTextEditor } from '@ap666/office-word'
+import { RichTextEditor } from '@norio-office/rich-text'
 
 const content = ref<JSONContent | null>({
   type: 'doc',
@@ -139,7 +139,7 @@ import { ref } from 'vue'
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket'
 import type { JSONContent } from '@tiptap/core'
-import { RichTextEditor } from '@ap666/office-word'
+import { RichTextEditor } from '@norio-office/rich-text'
 
 const ydoc = new Y.Doc()
 const provider = new WebsocketProvider('ws://localhost:1234', 'office-word-demo', ydoc)

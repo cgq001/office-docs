@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, shallowRef } from 'vue'
 import type { JSONContent } from '@tiptap/core'
-import type { RichTextEditorInstance } from '@ap666/office-word'
+import type { RichTextEditorInstance } from '@norio-office/rich-text'
 
 const editorComponent = shallowRef<unknown>(null)
 const editorRef = ref<RichTextEditorInstance | null>(null)
@@ -24,7 +24,7 @@ const content = ref<JSONContent | null>({
 
 onMounted(async () => {
   try {
-    const mod = await import('@ap666/office-word')
+    const mod = await import('@norio-office/rich-text')
     editorComponent.value = mod.RichTextEditor
   } catch (error) {
     loadError.value = error instanceof Error ? error.message : 'Failed to load editor'

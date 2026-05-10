@@ -5,7 +5,7 @@ outline: deep
 
 # Office Word
 
-`@ap666/office-word` 是一个基于 `Vue 3 + Tiptap 3` 的在线文档式富文本编辑器组件，目标是提供接近在线文档产品的编辑体验，同时保持业务接入的可控性。
+`@norio-office/rich-text` 是一个基于 `Vue 3 + Tiptap 3` 的在线文档式富文本编辑器组件，目标是提供接近在线文档产品的编辑体验，同时保持业务接入的可控性。
 
 当前组件已经覆盖：
 

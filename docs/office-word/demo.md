@@ -15,7 +15,7 @@ outline: deep
 
 ## 演示页包含的能力
 
-- 真实挂载 `@ap666/office-word`
+- 真实挂载 `@norio-office/rich-text`
 - 可直接编辑文档内容
 - 支持导出 HTML、PDF、图片
 - 支持本地选择图片和视频进行回填演示

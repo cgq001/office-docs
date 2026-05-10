@@ -5,7 +5,7 @@ outline: deep
 
 # Collaboration
 
-`@ap666/office-word` supports optional Yjs collaboration while keeping the same component API for normal single-user editing.
+`@norio-office/rich-text` supports optional Yjs collaboration while keeping the same component API for normal single-user editing.
 
 ## Collaboration Prop
 
@@ -42,7 +42,7 @@ type RichTextEditorCollaborationOptions = {
 The published package ships a minimal websocket server example in `yjs/`.
 
 ```bash
-cd node_modules/@ap666/office-word/yjs
+cd node_modules/@norio-office/rich-text/yjs
 npm install
 npm run start
 ```

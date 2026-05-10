@@ -5,7 +5,7 @@ outline: deep
 
 # 协同编辑
 
-`@ap666/office-word` 已支持可选的 `Yjs` 协同编辑模式。同一个组件既可以保持原有的单人 `v-model` JSON 工作流，也可以切换到多人共享文档模式。
+`@norio-office/rich-text` 已支持可选的 `Yjs` 协同编辑模式。同一个组件既可以保持原有的单人 `v-model` JSON 工作流，也可以切换到多人共享文档模式。
 
 ## 设计原则
 
@@ -52,7 +52,7 @@ type RichTextEditorCollaborationOptions = {
 ```vue
 <script setup lang="ts">
 import * as Y from 'yjs'
-import { RichTextEditor } from '@ap666/office-word'
+import { RichTextEditor } from '@norio-office/rich-text'
 
 const ydoc = new Y.Doc()
 </script>
@@ -81,7 +81,7 @@ import { ref } from 'vue'
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket'
 import type { JSONContent } from '@tiptap/core'
-import { RichTextEditor } from '@ap666/office-word'
+import { RichTextEditor } from '@norio-office/rich-text'
 
 const ydoc = new Y.Doc()
 const provider = new WebsocketProvider('ws://localhost:1234', 'office-word-demo', ydoc)
@@ -133,12 +133,12 @@ const content = ref<JSONContent | null>(null)
 
 ## 随包附带的 Yjs 服务示例
 
-`@ap666/office-word` 的 npm 包里已经附带了一个最小可运行的 `yjs/` websocket 服务示例，方便业务方快速验证协同。
+`@norio-office/rich-text` 的 npm 包里已经附带了一个最小可运行的 `yjs/` websocket 服务示例，方便业务方快速验证协同。
 
 启动方式：
 
 ```bash
-cd node_modules/@ap666/office-word/yjs
+cd node_modules/@norio-office/rich-text/yjs
 npm install
 npm run start
 ```

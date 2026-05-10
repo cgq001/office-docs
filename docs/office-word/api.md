@@ -212,5 +212,5 @@ import type {
   RichTextEditorImagePayload,
   RichTextEditorInstance,
   RichTextEditorVideoPayload,
-} from '@ap666/office-word'
+} from '@norio-office/rich-text'
 ```

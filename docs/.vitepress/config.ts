@@ -10,6 +10,7 @@ const officeWordSidebarZh = [
       { text: 'API', link: '/office-word/api' },
       { text: 'Demo 演示', link: '/office-word/demo' },
       { text: '在线演示', link: '/office-word/playground' },
+      { text: 'npm 发布', link: '/office-word/npm-publish' },
       { text: '常见问题', link: '/office-word/faq' }
     ]
   }
@@ -25,6 +26,7 @@ const officeWordSidebarEn = [
       { text: 'API', link: '/en/office-word/api' },
       { text: 'Demo', link: '/en/office-word/demo' },
       { text: 'Playground', link: '/en/office-word/playground' },
+      { text: 'NPM Publish', link: '/en/office-word/npm-publish' },
       { text: 'FAQ', link: '/en/office-word/faq' }
     ]
   }

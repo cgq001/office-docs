@@ -26,7 +26,7 @@ features:
 
 We are building a documentation site for full-scenario online editor products, including document editing, rich text editing, structured content editing, collaboration, exports, and presentation features.
 
-The first product is `@ap666/office-word`, a rich text editor component designed to feel close to an online document experience. More products will be added to this site later.
+The first product is `@norio-office/rich-text`, a rich text editor component designed to feel close to an online document experience. More products will be added to this site later.
 
 ## Current Product
 
