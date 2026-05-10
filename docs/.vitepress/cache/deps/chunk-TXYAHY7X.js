@@ -1,4 +1,4 @@
-// node_modules/@ap666/office-word/dist/chunk-efA98nb6.js
+// node_modules/@norio-office/rich-text/dist/chunk-efA98nb6.js
 var e = Object.create;
 var t = Object.defineProperty;
 var n = Object.getOwnPropertyDescriptor;
@@ -22,4 +22,4 @@ export {
   o,
   c
 };
-//# sourceMappingURL=chunk-CYLA5VZ5.js.map
+//# sourceMappingURL=chunk-TXYAHY7X.js.map

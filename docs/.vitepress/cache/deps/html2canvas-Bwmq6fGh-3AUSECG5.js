@@ -1,9 +1,9 @@
 import {
   o
-} from "./chunk-CYLA5VZ5.js";
+} from "./chunk-TXYAHY7X.js";
 import "./chunk-EQCVQC35.js";
 
-// node_modules/@ap666/office-word/dist/html2canvas-Bwmq6fGh.js
+// node_modules/@norio-office/rich-text/dist/html2canvas-Bwmq6fGh.js
 var t = o((e, t2) => {
   (function(n, r) {
     typeof e == "object" && t2 !== void 0 ? t2.exports = r() : typeof define == "function" && define.amd ? define(r) : (n = typeof globalThis < "u" ? globalThis : n || self, n.html2canvas = r());
@@ -4416,4 +4416,4 @@ var html2canvas_Bwmq6fGh_default = t();
 export {
   html2canvas_Bwmq6fGh_default as default
 };
-//# sourceMappingURL=html2canvas-Bwmq6fGh-ADNEBVR7.js.map
+//# sourceMappingURL=html2canvas-Bwmq6fGh-3AUSECG5.js.map

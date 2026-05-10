@@ -1,31 +1,31 @@
 {
-  "hash": "d7c3e8b9",
+  "hash": "18f8382c",
   "configHash": "63364062",
-  "lockfileHash": "697cfdd6",
-  "browserHash": "2b4ec9da",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "69ec9511",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "c05b2238",
+      "fileHash": "944a181d",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "b7a0b3da",
+      "fileHash": "ec561a22",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "aea2624d",
+      "fileHash": "ed169931",
       "needsInterop": false
     },
-    "@ap666/office-word": {
-      "src": "../../../../node_modules/@ap666/office-word/dist/index.js",
-      "file": "@ap666_office-word.js",
-      "fileHash": "fc69bc6c",
+    "@norio-office/rich-text": {
+      "src": "../../../../node_modules/@norio-office/rich-text/dist/index.js",
+      "file": "@norio-office_rich-text.js",
+      "fileHash": "c0cbcfa9",
       "needsInterop": false
     }
   },
@@ -33,23 +33,23 @@
     "chunk-URVHZSMY": {
       "file": "chunk-URVHZSMY.js"
     },
-    "html2canvas-Bwmq6fGh-ADNEBVR7": {
-      "file": "html2canvas-Bwmq6fGh-ADNEBVR7.js"
+    "html2canvas-Bwmq6fGh-3AUSECG5": {
+      "file": "html2canvas-Bwmq6fGh-3AUSECG5.js"
     },
-    "purify.es-B5ixYH9L-7APK5GQN": {
-      "file": "purify__es-B5ixYH9L-7APK5GQN.js"
+    "purify.es-B5ixYH9L-6DEYYWIO": {
+      "file": "purify__es-B5ixYH9L-6DEYYWIO.js"
     },
-    "index.es-C4X5YiRo-6OLPPAH4": {
-      "file": "index__es-C4X5YiRo-6OLPPAH4.js"
+    "index.es-C4X5YiRo-R53SXVTS": {
+      "file": "index__es-C4X5YiRo-R53SXVTS.js"
     },
-    "jspdf.es.min-ByaXFVjc-IJC2XXHL": {
-      "file": "jspdf__es__min-ByaXFVjc-IJC2XXHL.js"
+    "jspdf.es.min-ByaXFVjc-SFIKO7QV": {
+      "file": "jspdf__es__min-ByaXFVjc-SFIKO7QV.js"
     },
-    "chunk-INAZFQXU": {
-      "file": "chunk-INAZFQXU.js"
+    "chunk-U7VLGIGV": {
+      "file": "chunk-U7VLGIGV.js"
     },
-    "chunk-CYLA5VZ5": {
-      "file": "chunk-CYLA5VZ5.js"
+    "chunk-TXYAHY7X": {
+      "file": "chunk-TXYAHY7X.js"
     },
     "chunk-EQCVQC35": {
       "file": "chunk-EQCVQC35.js"

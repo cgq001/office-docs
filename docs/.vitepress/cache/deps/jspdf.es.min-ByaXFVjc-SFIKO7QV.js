@@ -1,14 +1,14 @@
 import {
   e
-} from "./chunk-INAZFQXU.js";
+} from "./chunk-U7VLGIGV.js";
 import {
   c
-} from "./chunk-CYLA5VZ5.js";
+} from "./chunk-TXYAHY7X.js";
 import {
   __publicField
 } from "./chunk-EQCVQC35.js";
 
-// node_modules/@ap666/office-word/dist/jspdf.es.min-ByaXFVjc.js
+// node_modules/@norio-office/rich-text/dist/jspdf.es.min-ByaXFVjc.js
 var n = Uint8Array;
 var r = Uint16Array;
 var i = Int32Array;
@@ -16325,14 +16325,14 @@ function Ys() {
   }, e4.allowFsRead = void 0, e4.loadImageFile = e4.loadFile;
 }(Z.API), function(n2) {
   function r2() {
-    return (X.html2canvas ? Promise.resolve(X.html2canvas) : import("./html2canvas-Bwmq6fGh-ADNEBVR7.js").then((t) => c(t.default))).catch(function(e4) {
+    return (X.html2canvas ? Promise.resolve(X.html2canvas) : import("./html2canvas-Bwmq6fGh-3AUSECG5.js").then((t) => c(t.default))).catch(function(e4) {
       return Promise.reject(Error("Could not load html2canvas: " + e4));
     }).then(function(e4) {
       return e4.default ? e4.default : e4;
     });
   }
   function i2() {
-    return (X.DOMPurify ? Promise.resolve(X.DOMPurify) : import("./purify.es-B5ixYH9L-7APK5GQN.js")).catch(function(e4) {
+    return (X.DOMPurify ? Promise.resolve(X.DOMPurify) : import("./purify.es-B5ixYH9L-6DEYYWIO.js")).catch(function(e4) {
       return Promise.reject(Error("Could not load dompurify: " + e4));
     }).then(function(e4) {
       return e4.default ? e4.default : e4;
@@ -17491,7 +17491,7 @@ function Ys() {
     ignoreAnimation: true,
     ignoreDimensions: true
   }, d2 = this;
-  return (X.canvg ? Promise.resolve(X.canvg) : import("./index.es-C4X5YiRo-6OLPPAH4.js")).catch(function(e5) {
+  return (X.canvg ? Promise.resolve(X.canvg) : import("./index.es-C4X5YiRo-R53SXVTS.js")).catch(function(e5) {
     return Promise.reject(Error("Could not load canvg: " + e5));
   }).then(function(e5) {
     return e5.default ? e5.default : e5;
@@ -18591,4 +18591,4 @@ export {
   Z as default,
   Z as jsPDF
 };
-//# sourceMappingURL=jspdf.es.min-ByaXFVjc-IJC2XXHL.js.map
+//# sourceMappingURL=jspdf.es.min-ByaXFVjc-SFIKO7QV.js.map

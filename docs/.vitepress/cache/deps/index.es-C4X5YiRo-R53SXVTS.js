@@ -1,13 +1,13 @@
 import {
   e
-} from "./chunk-INAZFQXU.js";
+} from "./chunk-U7VLGIGV.js";
 import {
   c,
   o
-} from "./chunk-CYLA5VZ5.js";
+} from "./chunk-TXYAHY7X.js";
 import "./chunk-EQCVQC35.js";
 
-// node_modules/@ap666/office-word/dist/index.es-C4X5YiRo.js
+// node_modules/@norio-office/rich-text/dist/index.es-C4X5YiRo.js
 var r = o((e15, t) => {
   var n = function(e16) {
     return e16 && e16.Math === Math && e16;
@@ -6144,4 +6144,4 @@ export {
   _r as vectorsAngle,
   gr as vectorsRatio
 };
-//# sourceMappingURL=index.es-C4X5YiRo-6OLPPAH4.js.map
+//# sourceMappingURL=index.es-C4X5YiRo-R53SXVTS.js.map

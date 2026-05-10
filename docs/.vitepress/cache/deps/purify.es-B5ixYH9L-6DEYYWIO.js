@@ -1,6 +1,6 @@
 import "./chunk-EQCVQC35.js";
 
-// node_modules/@ap666/office-word/dist/purify.es-B5ixYH9L.js
+// node_modules/@norio-office/rich-text/dist/purify.es-B5ixYH9L.js
 var { entries: e, setPrototypeOf: t, isFrozen: n, getPrototypeOf: r, getOwnPropertyDescriptor: i } = Object;
 var { freeze: a, seal: o, create: s } = Object;
 var { apply: c, construct: l } = typeof Reflect < "u" && Reflect;
@@ -594,4 +594,4 @@ var je = Ae();
 export {
   je as default
 };
-//# sourceMappingURL=purify.es-B5ixYH9L-7APK5GQN.js.map
+//# sourceMappingURL=purify.es-B5ixYH9L-6DEYYWIO.js.map

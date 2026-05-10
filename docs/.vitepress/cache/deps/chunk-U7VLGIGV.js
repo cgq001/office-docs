@@ -1,4 +1,4 @@
-// node_modules/@ap666/office-word/dist/typeof-Dz1Ap89p.js
+// node_modules/@norio-office/rich-text/dist/typeof-Dz1Ap89p.js
 function e(t) {
   "@babel/helpers - typeof";
   return e = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e2) {
@@ -11,4 +11,4 @@ function e(t) {
 export {
   e
 };
-//# sourceMappingURL=chunk-INAZFQXU.js.map
+//# sourceMappingURL=chunk-U7VLGIGV.js.map
