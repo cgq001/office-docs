@@ -1,5 +1,9 @@
 ---
 title: 在线演示
-layout: full-demo
+layout: page
 outline: false
+sidebar: false
+pageClass: playground-page
 ---
+
+<OfficeWordDemoPage />

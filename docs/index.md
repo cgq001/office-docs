@@ -18,8 +18,14 @@ hero:
 
 features:
   - title: 富文本编辑器
+    icon:
+      src: /assets/rich.svg
+      alt: 富文本编辑器
     details:  图片、视频、文件、@提及、水印、多人协同等全场景编辑器产品
   - title: Excel
+    icon:
+      src: /assets/excel.svg
+      alt: Excel
     details: 将完整的Excel功能搬到线上，实现在线的Excel创建、编辑、多人协同等
 ---
 
@@ -41,4 +47,3 @@ features:
 - 协同编辑：说明 Yjs 和 provider 的接入方式
 - Demo 演示：给业务方展示典型接入方式和落地范式
 - 文档入口：[开始阅读](/rich-text/introduction)
-

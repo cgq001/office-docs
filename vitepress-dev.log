@@ -1,0 +1,9 @@
+
+> office-docs@0.1.0 docs:dev
+> vitepress dev docs --host 127.0.0.1
+
+
+  [32m[1mvitepress[22m v1.6.4[39m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m21:26:25[22m [36m[1m[vitepress][22m[39m [32mhmr update [39m[2m/.vitepress/theme/custom.css[22m

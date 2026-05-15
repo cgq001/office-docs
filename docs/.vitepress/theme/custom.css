@@ -103,8 +103,29 @@
   letter-spacing: 0;
 }
 
+.playground-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.playground-page .VPContent {
+  flex: 0 0 auto;
+  padding-top: var(--vp-nav-height);
+}
+
+.playground-page .VPPage {
+  height: calc(100vh - var(--vp-nav-height) - 12px);
+  overflow: hidden;
+}
+
+.playground-page .VPFooter {
+  display: none;
+}
+
 .office-demo-page {
-  min-height: 100vh;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
   background:
     radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 30%),
     linear-gradient(180deg, #f3f8f7 0%, #ffffff 100%);
@@ -117,33 +138,65 @@
 }
 
 .office-demo-page__main {
+  box-sizing: border-box;
+  height: 100%;
   max-width: 1800px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 8px;
+  overflow: hidden;
 }
 
 .office-demo-page__main--full {
   max-width: none;
 }
 
+.office-editor-demo {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+}
+
 .office-editor-demo__frame {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--vp-c-bg);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
 }
 
 .office-editor-demo__frame .rich-text-editor {
-  min-height: calc(100vh - 48px);
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+}
+
+.office-editor-demo__frame .norio-office-rich-editor {
+  height: 100%;
+  min-height: 0;
+}
+
+.office-editor-demo__frame .norio-office-rich-editor__main,
+.office-editor-demo__frame .norio-office-rich-editor__workspace {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.office-editor-demo__frame .norio-office-rich-editor__scroll {
+  min-height: 0;
+  max-height: 100%;
 }
 
 .office-editor-demo__state {
   display: grid;
   place-items: center;
-  min-height: calc(100vh - 48px);
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.8);
   color: var(--vp-c-text-2);
 }
@@ -156,6 +209,6 @@
 
 @media (max-width: 960px) {
   .office-demo-page__main {
-    padding: 12px;
+    padding: 8px;
   }
 }
