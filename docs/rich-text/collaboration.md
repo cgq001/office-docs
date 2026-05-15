@@ -84,7 +84,7 @@ import type { JSONContent } from '@tiptap/core'
 import { RichTextEditor } from '@norio-office/rich-text'
 
 const ydoc = new Y.Doc()
-const provider = new WebsocketProvider('ws://localhost:1234', 'office-word-demo', ydoc)
+const provider = new WebsocketProvider('ws://localhost:1234', 'rich-text-demo', ydoc)
 const content = ref<JSONContent | null>(null)
 </script>
 

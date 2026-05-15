@@ -3,7 +3,7 @@ title: 介绍
 outline: deep
 ---
 
-# Office Word
+# 富文本
 
 `@norio-office/rich-text` 是一个基于 `Vue 3 + Tiptap 3` 的在线文档式富文本编辑器组件，目标是提供接近在线文档产品的编辑体验，同时保持业务接入的可控性。
 
@@ -104,7 +104,7 @@ outline: deep
 
 ## 推荐阅读顺序
 
-1. 先看 [快速开始](/office-word/getting-started)
-2. 如果有多人协同需求，再看 [协同编辑](/office-word/collaboration)
-3. 再看 [API 文档](/office-word/api)
-4. 最后看 [Demo 演示](/office-word/demo) 和 [在线演示](/office-word/playground)
+1. 先看 [快速开始](/rich-text/getting-started)
+2. 如果有多人协同需求，再看 [协同编辑](/rich-text/collaboration)
+3. 再看 [API 文档](/rich-text/api)
+4. 最后看 [Demo 演示](/rich-text/demo) 和 [在线演示](/rich-text/playground)

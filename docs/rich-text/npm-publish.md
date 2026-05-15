@@ -16,7 +16,7 @@ http://192.168.0.146:40087/
 在组件仓库执行发布前检查：
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm run typecheck
 npm run build:all
 npm run publish:dry-run
@@ -29,7 +29,7 @@ npm run publish:dry-run
 如果只想本次发布指定内网 registry，可以直接把 registry 参数透传给 `npm publish`：
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm login --registry http://192.168.0.146:40087/
 npm run publish:npm -- --registry http://192.168.0.146:40087/
 ```
@@ -48,7 +48,7 @@ npm login --registry http://192.168.0.146:40087/
 配置后，发布可以简化为：
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm run publish:npm
 ```
 

@@ -92796,7 +92796,7 @@ var Vn = {
   class: "norio-office-rich-emoji-picker-panel__tab-icon",
   "aria-hidden": "true"
 };
-var Hn = "office-word:recent-emojis";
+var Hn = "rich-text:recent-emojis";
 var Un = 10;
 var Wn = defineComponent({
   __name: "EmojiPickerPanel",
@@ -132248,7 +132248,7 @@ var MS = defineComponent({
     }
     function da2(e11) {
       let t = /* @__PURE__ */ new Date();
-      return `office-word-${t.getFullYear()}${String(t.getMonth() + 1).padStart(2, "0")}${String(t.getDate()).padStart(2, "0")}-${String(t.getHours()).padStart(2, "0")}${String(t.getMinutes()).padStart(2, "0")}${String(t.getSeconds()).padStart(2, "0")}.${e11}`;
+      return `rich-text-${t.getFullYear()}${String(t.getMonth() + 1).padStart(2, "0")}${String(t.getDate()).padStart(2, "0")}-${String(t.getHours()).padStart(2, "0")}${String(t.getMinutes()).padStart(2, "0")}${String(t.getSeconds()).padStart(2, "0")}.${e11}`;
     }
     function fa2() {
       if (!D.value) return null;
@@ -134140,19 +134140,19 @@ ${e11}
     function ll2(e11) {
       if (!Rr2.value || !e11.clipboardData) return;
       let t = Wo2();
-      t && (e11.preventDefault(), e11.stopPropagation(), e11.clipboardData.setData("application/x-office-word-blocks+json", JSON.stringify(t.json)), e11.clipboardData.setData("text/html", t.html), e11.clipboardData.setData("text/plain", t.text));
+      t && (e11.preventDefault(), e11.stopPropagation(), e11.clipboardData.setData("application/x-rich-text-blocks+json", JSON.stringify(t.json)), e11.clipboardData.setData("text/html", t.html), e11.clipboardData.setData("text/plain", t.text));
     }
     function ul2(e11) {
       if (!Rr2.value || !e11.clipboardData || !sr2.value) return;
       let t = Wo2();
-      t && (e11.preventDefault(), e11.stopPropagation(), e11.clipboardData.setData("application/x-office-word-blocks+json", JSON.stringify(t.json)), e11.clipboardData.setData("text/html", t.html), e11.clipboardData.setData("text/plain", t.text), qo2());
+      t && (e11.preventDefault(), e11.stopPropagation(), e11.clipboardData.setData("application/x-rich-text-blocks+json", JSON.stringify(t.json)), e11.clipboardData.setData("text/html", t.html), e11.clipboardData.setData("text/plain", t.text), qo2());
     }
     function dl2(e11) {
       var _a4;
       if (!sr2.value || !e11.clipboardData) return;
       let t = e11.target;
       if (t && !((_a4 = T.value) == null ? void 0 : _a4.contains(t))) return;
-      let n = e11.clipboardData.getData("application/x-office-word-blocks+json");
+      let n = e11.clipboardData.getData("application/x-rich-text-blocks+json");
       if (n) try {
         let t2 = JSON.parse(n);
         if (!Array.isArray(t2) || !t2.length) return;

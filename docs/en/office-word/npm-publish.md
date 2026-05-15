@@ -16,7 +16,7 @@ http://192.168.0.146:40087/
 Run the checks from the component repository:
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm run typecheck
 npm run build:all
 npm run publish:dry-run
@@ -29,7 +29,7 @@ If the current version has already been published, bump the package version befo
 To publish this release to the internal registry, pass the registry through to `npm publish`:
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm login --registry http://192.168.0.146:40087/
 npm run publish:npm -- --registry http://192.168.0.146:40087/
 ```
@@ -48,7 +48,7 @@ npm login --registry http://192.168.0.146:40087/
 After that, publishing can use:
 
 ```bash
-cd D:\work\office\office-word
+cd D:\work\office\rich-text
 npm run publish:npm
 ```
 

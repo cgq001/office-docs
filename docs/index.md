@@ -7,11 +7,11 @@ hero:
   tagline: 面向企业级的在线编辑器，覆盖富文本、Excel、Word、PPT、多维表格在内的多维度在线办公需求。
   actions:
     - theme: brand
-      text: 查看 Office Word
-      link: /office-word/introduction
+      text: 查看 富文本
+      link: /rich-text/introduction
     - theme: alt
       text: 快速开始
-      link: /office-word/getting-started
+      link: /rich-text/getting-started
 
 features:
   - title: 全场景规划
@@ -30,12 +30,12 @@ features:
 
 ## 当前产品
 
-### Office Word
+### 富文本
 
 - 产品定位：在线文档式富文本编辑器
 - 技术基础：`Vue 3 + Tiptap 3`
 - 核心能力：编辑、排版、预览、导出、打印、演示、协同、本地文件块
-- 文档入口：[开始阅读](/office-word/introduction)
+- 文档入口：[开始阅读](/rich-text/introduction)
 
 ## 文档结构
 

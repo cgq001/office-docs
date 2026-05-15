@@ -13,7 +13,7 @@ const content = ref<JSONContent | null>({
     {
       type: 'heading',
       attrs: { level: 1 },
-      content: [{ type: 'text', text: 'Office Word Demo' }]
+      content: [{ type: 'text', text: '富文本 Demo' }]
     },
     {
       type: 'paragraph',

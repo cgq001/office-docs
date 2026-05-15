@@ -9,7 +9,7 @@ outline: deep
 
 ## 进入演示
 
-- 演示地址：[Office Word 在线演示](/office-word/playground)
+- 演示地址：[富文本 在线演示](/rich-text/playground)
 - 适合直接发给外部用户预览
 - 页面会全宽展示编辑器，体验比文档内嵌方式更合适
 

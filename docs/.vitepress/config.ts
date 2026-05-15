@@ -2,32 +2,32 @@ import { defineConfig } from 'vitepress'
 
 const officeWordSidebarZh = [
   {
-    text: 'Office Word',
+    text: '富文本',
     items: [
-      { text: '介绍', link: '/office-word/introduction' },
-      { text: '快速开始', link: '/office-word/getting-started' },
-      { text: '协同编辑', link: '/office-word/collaboration' },
-      { text: 'API', link: '/office-word/api' },
-      { text: 'Demo 演示', link: '/office-word/demo' },
-      { text: '在线演示', link: '/office-word/playground' },
-      { text: 'npm 发布', link: '/office-word/npm-publish' },
-      { text: '常见问题', link: '/office-word/faq' }
+      { text: '介绍', link: '/rich-text/introduction' },
+      { text: '快速开始', link: '/rich-text/getting-started' },
+      { text: '协同编辑', link: '/rich-text/collaboration' },
+      { text: 'API', link: '/rich-text/api' },
+      { text: 'Demo 演示', link: '/rich-text/demo' },
+      { text: '在线演示', link: '/rich-text/playground' },
+      { text: 'npm 发布', link: '/rich-text/npm-publish' },
+      { text: '常见问题', link: '/rich-text/faq' }
     ]
   }
 ]
 
 const officeWordSidebarEn = [
   {
-    text: 'Office Word',
+    text: '富文本',
     items: [
-      { text: 'Introduction', link: '/en/office-word/introduction' },
-      { text: 'Getting Started', link: '/en/office-word/getting-started' },
-      { text: 'Collaboration', link: '/en/office-word/collaboration' },
-      { text: 'API', link: '/en/office-word/api' },
-      { text: 'Demo', link: '/en/office-word/demo' },
-      { text: 'Playground', link: '/en/office-word/playground' },
-      { text: 'NPM Publish', link: '/en/office-word/npm-publish' },
-      { text: 'FAQ', link: '/en/office-word/faq' }
+      { text: 'Introduction', link: '/en/rich-text/introduction' },
+      { text: 'Getting Started', link: '/en/rich-text/getting-started' },
+      { text: 'Collaboration', link: '/en/rich-text/collaboration' },
+      { text: 'API', link: '/en/rich-text/api' },
+      { text: 'Demo', link: '/en/rich-text/demo' },
+      { text: 'Playground', link: '/en/rich-text/playground' },
+      { text: 'NPM Publish', link: '/en/rich-text/npm-publish' },
+      { text: 'FAQ', link: '/en/rich-text/faq' }
     ]
   }
 ]
@@ -46,10 +46,10 @@ export default defineConfig({
         siteTitle: 'Office Editor Docs',
         nav: [
           { text: '首页', link: '/' },
-          { text: 'Office Word', link: '/office-word/introduction' }
+          { text: '富文本', link: '/rich-text/introduction' }
         ],
         sidebar: {
-          '/office-word/': officeWordSidebarZh
+          '/rich-text/': officeWordSidebarZh
         },
         socialLinks: [
           { icon: 'github', link: 'https://github.com/cgq001/office-docs' }
@@ -72,10 +72,10 @@ export default defineConfig({
         siteTitle: 'Office Editor Docs',
         nav: [
           { text: 'Home', link: '/en/' },
-          { text: 'Office Word', link: '/en/office-word/introduction' }
+          { text: 'Office Word', link: '/en/rich-text/introduction' }
         ],
         sidebar: {
-          '/en/office-word/': officeWordSidebarEn
+          '/en/rich-text/': officeWordSidebarEn
         },
         socialLinks: [
           { icon: 'github', link: 'https://github.com/cgq001/office-docs' }

@@ -19,8 +19,8 @@ npm run docs:preview
 ## 文档结构
 
 - `docs/index.md`：首页
-- `docs/office-word/introduction.md`：产品介绍
-- `docs/office-word/getting-started.md`：快速开始
-- `docs/office-word/api.md`：API 文档
-- `docs/office-word/demo.md`：Demo 演示
-- `docs/office-word/faq.md`：常见问题
+- `docs/rich-text/introduction.md`：产品介绍
+- `docs/rich-text/getting-started.md`：快速开始
+- `docs/rich-text/api.md`：API 文档
+- `docs/rich-text/demo.md`：Demo 演示
+- `docs/rich-text/faq.md`：常见问题
