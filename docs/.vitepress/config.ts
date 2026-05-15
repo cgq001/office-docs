@@ -33,7 +33,7 @@ const officeWordSidebarEn = [
 ]
 
 export default defineConfig({
-  base: '/office-docs/',
+  base: '',
   cleanUrls: true,
   lastUpdated: true,
   locales: {
