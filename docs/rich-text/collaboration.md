@@ -5,6 +5,9 @@ outline: deep
 
 # 协同编辑
 
+
+<span style="color:red">协同编辑 目前只针对pro版本用户开放</span>
+
 `@norio-office/rich-text` 支持普通单人编辑，也支持可选的 `Yjs` 协同编辑。同一个组件既可以保持单人 `v-model` JSON 工作流，也可以切换到多人共享文档模式。
 
 ## 设计原则

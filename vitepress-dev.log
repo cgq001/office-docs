@@ -21,3 +21,76 @@
 [2m22:02:51[22m [36m[1m[vitepress][22m[39m [32mhmr update [39m[2m/.vitepress/theme/custom.css[22m
 [2m22:04:15[22m [36m[1m[vitepress][22m[39m [32mhmr update [39m[2m/.vitepress/theme/custom.css[22m
 [2m22:04:25[22m [36m[1m[vitepress][22m[39m [32mhmr update [39m[2m/.vitepress/theme/custom.css[22m
+[2m22:18:03[22m [36m[1m[vitepress][22m[39m [32mdocs\.vitepress\config.ts changed, restarting server...
+[39m
+
+  [32m[1mvitepress[22m v1.6.4[39m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/404.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/index.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/index.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/api.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/collaboration.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/demo.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/faq.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/getting-started.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/introduction.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/npm-publish.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/playground.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/api.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/collaboration.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/demo.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/faq.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/getting-started.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/introduction.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/npm-publish.html[22m
+[2m22:19:06[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/playground.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/404.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/404.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/index.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/index.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/api.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/collaboration.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/demo.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/faq.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/getting-started.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/introduction.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/playground.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/office-word/npm-publish.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/api.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/collaboration.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/demo.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/faq.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/getting-started.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/introduction.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/npm-publish.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/rich-text/playground.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/api.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/collaboration.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/demo.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/faq.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/getting-started.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/introduction.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/npm-publish.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/en/office-word/playground.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/api.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/collaboration.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/demo.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/faq.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/getting-started.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/introduction.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/npm-publish.html[22m
+[2m22:19:10[22m [36m[1m[vitepress][22m[39m [32mpage reload [39m[2m.vitepress/dist/rich-text/playground.html[22m
+[2m22:21:11[22m [36m[1m[vitepress][22m[39m [32mdocs\.vitepress\config.ts changed, restarting server...
+[39m
+
+  [32m[1mvitepress[22m v1.6.4[39m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m22:21:11[22m [36m[1m[vitepress][22m[39m [32mdocs\.vitepress\config.ts changed, restarting server...
+[39m
+
+  [32m[1mvitepress[22m v1.6.4[39m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m

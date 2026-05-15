@@ -6,7 +6,7 @@ const officeWordSidebarZh = [
     items: [
       { text: '介绍', link: '/rich-text/introduction' },
       { text: '快速开始', link: '/rich-text/getting-started' },
-      { text: '协同编辑', link: '/rich-text/collaboration' },
+      { text: '协同编辑（专业版）', link: '/rich-text/collaboration' },
       { text: 'API', link: '/rich-text/api' },
       { text: 'Demo 演示', link: '/rich-text/demo' },
       { text: '在线演示', link: '/rich-text/playground' },
