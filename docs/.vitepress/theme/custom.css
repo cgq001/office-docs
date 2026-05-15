@@ -1,10 +1,10 @@
 :root {
-  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-1: #13A1FF;
   --vp-c-brand-2: #115e59;
-  --vp-c-brand-3: #134e4a;
+  --vp-c-brand-3: #0471FF;
   --vp-c-brand-soft: rgba(15, 118, 110, 0.14);
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #0f766e 0%, #0284c7 55%, #2563eb 100%);
+  --vp-home-hero-name-background: linear-gradient(120deg, #13A1FF 0%, #0284c7 55%, #2563eb 100%);
 }
 
 .VPNavBarTitle .logo {
