@@ -13,7 +13,7 @@
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@norio-office/rich-text": "^0.1.0",
+    "@norio-office/rich-text": "^0.3.0",
     "@tiptap/core": "^3.22.2",
     "@tiptap/extension-code-block": "^3.22.2",
     "@tiptap/extension-code-block-lowlight": "^3.22.2",
