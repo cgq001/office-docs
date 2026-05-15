@@ -43,7 +43,7 @@ export default defineConfig({
       title: 'Norio',
       description: '全场景在线编辑器产品文档',
       themeConfig: {
-        siteTitle: 'Office Editor Docs',
+        siteTitle: 'Norio 官方文档',
         nav: [
           { text: '首页', link: '/' },
           { text: '富文本', link: '/rich-text/introduction' }
@@ -66,10 +66,10 @@ export default defineConfig({
     en: {
       label: 'English',
       lang: 'en-US',
-      title: 'Office Editor Docs',
+      title: 'Norio 官方文档',
       description: 'Product documentation for full-scenario online editors',
       themeConfig: {
-        siteTitle: 'Office Editor Docs',
+        siteTitle: 'Norio 官方文档',
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Office Word', link: '/en/rich-text/introduction' }

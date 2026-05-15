@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Office Editor Docs
+  name: Norio 官方文档
   text: Documentation For Full-Scenario Online Editors
   tagline: Documentation for embeddable online editor products covering documents, rich text, collaboration, exports, presentations, and more.
   actions:
