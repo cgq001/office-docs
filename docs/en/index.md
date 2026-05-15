@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: Explore 富文本
-      link: /en/office-word/introduction
+      link: /en/rich-text/introduction
     - theme: alt
       text: Get Started
-      link: /en/office-word/getting-started
+      link: /en/rich-text/getting-started
 
 features:
   - title: Product Matrix
@@ -38,7 +38,7 @@ The first product is `@norio-office/rich-text`, a rich text editor component des
 - Positioning: online document-style rich text editor
 - Technical base: `Vue 3 + Tiptap 3`
 - Core capabilities: editing, layout, preview, export, print, presentation, collaboration, local file block
-- Docs entry: [Start reading](/en/office-word/introduction)
+- Docs entry: [Start reading](/en/rich-text/introduction)
 
 ## Documentation Structure
 

@@ -20,14 +20,14 @@ const officeWordSidebarEn = [
   {
     text: '富文本',
     items: [
-      { text: 'Introduction', link: '/en/office-word/introduction' },
-      { text: 'Getting Started', link: '/en/office-word/getting-started' },
-      { text: 'Collaboration', link: '/en/office-word/collaboration' },
-      { text: 'API', link: '/en/office-word/api' },
-      { text: 'Demo', link: '/en/office-word/demo' },
-      { text: 'Playground', link: '/en/office-word/playground' },
-      { text: 'NPM Publish', link: '/en/office-word/npm-publish' },
-      { text: 'FAQ', link: '/en/office-word/faq' }
+      { text: 'Introduction', link: '/en/rich-text/introduction' },
+      { text: 'Getting Started', link: '/en/rich-text/getting-started' },
+      { text: 'Collaboration', link: '/en/rich-text/collaboration' },
+      { text: 'API', link: '/en/rich-text/api' },
+      { text: 'Demo', link: '/en/rich-text/demo' },
+      { text: 'Playground', link: '/en/rich-text/playground' },
+      { text: 'NPM Publish', link: '/en/rich-text/npm-publish' },
+      { text: 'FAQ', link: '/en/rich-text/faq' }
     ]
   }
 ]
@@ -54,7 +54,8 @@ export default defineConfig({
           { text: '富文本', link: '/rich-text/introduction' }
         ],
         sidebar: {
-          '/rich-text/': officeWordSidebarZh
+          '/rich-text/': officeWordSidebarZh,
+          '/office-word/': officeWordSidebarZh
         },
         socialLinks: [
           { icon: 'github', link: 'https://github.com/cgq001/office-docs' }
@@ -78,9 +79,10 @@ export default defineConfig({
         siteTitle: 'Norio 官方文档',
         nav: [
           { text: 'Home', link: '/en/' },
-          { text: 'Office Word', link: '/en/office-word/introduction' }
+          { text: 'Office Word', link: '/en/rich-text/introduction' }
         ],
         sidebar: {
+          '/en/rich-text/': officeWordSidebarEn,
           '/en/office-word/': officeWordSidebarEn
         },
         socialLinks: [
