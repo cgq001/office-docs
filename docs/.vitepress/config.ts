@@ -40,7 +40,7 @@ export default defineConfig({
     root: {
       label: '简体中文',
       lang: 'zh-CN',
-      title: 'Office Editor Docs',
+      title: 'Norio',
       description: '全场景在线编辑器产品文档',
       themeConfig: {
         siteTitle: 'Office Editor Docs',

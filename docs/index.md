@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: Office Editor Docs
-  text: 全场景在线编辑器产品文档
-  tagline: 面向业务系统的在线编辑器组件文档，覆盖文档、富文本、协同、演示、导出与更多编辑场景。
+  name: Norio
+  text: 全场景在线编辑器
+  tagline: 面向企业级的在线编辑器，覆盖富文本、Excel、Word、PPT、多维表格在内的多维度在线办公需求。
   actions:
     - theme: brand
       text: 查看 Office Word
