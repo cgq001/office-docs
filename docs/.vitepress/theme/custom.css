@@ -114,8 +114,8 @@
 }
 
 .playground-page .VPPage {
-  height: calc(100vh - var(--vp-nav-height) - 12px);
-  overflow: hidden;
+  /* height: calc(100vh - var(--vp-nav-height) - 12px); */
+  /* overflow: hidden; */
 }
 
 .playground-page .VPFooter {
@@ -125,7 +125,6 @@
 .office-demo-page {
   box-sizing: border-box;
   height: 100%;
-  overflow: hidden;
   background:
     radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 30%),
     linear-gradient(180deg, #f3f8f7 0%, #ffffff 100%);
@@ -142,8 +141,7 @@
   height: 100%;
   max-width: 1800px;
   margin: 0 auto;
-  padding: 8px;
-  overflow: hidden;
+  padding: 8px; 
 }
 
 .office-demo-page__main--full {
