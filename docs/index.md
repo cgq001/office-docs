@@ -5,6 +5,9 @@ hero:
   name: Norio
   text: 全场景在线编辑器
   tagline: 面向企业级的在线编辑器，覆盖富文本、Excel、Word、PPT、多维表格在内的多维度在线办公需求。
+  image:
+    src: /assets/icon.png
+    alt: Norio
   actions:
     - theme: brand
       text: 查看 富文本

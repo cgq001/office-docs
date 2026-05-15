@@ -3,6 +3,104 @@
   --vp-c-brand-2: #115e59;
   --vp-c-brand-3: #134e4a;
   --vp-c-brand-soft: rgba(15, 118, 110, 0.14);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #0f766e 0%, #0284c7 55%, #2563eb 100%);
+}
+
+.VPNavBarTitle .logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.25);
+}
+
+.VPHome {
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(2, 132, 199, 0.08) 42%, rgba(37, 99, 235, 0.07) 100%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 58%, #ffffff 100%);
+}
+
+.dark .VPHome {
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(14, 165, 233, 0.12) 44%, rgba(99, 102, 241, 0.1) 100%),
+    linear-gradient(180deg, #020617 0%, #0f172a 58%, #020617 100%);
+}
+
+.VPHomeHero {
+  padding-top: 72px;
+}
+
+.VPHomeHero .main {
+  max-width: 640px;
+}
+
+.VPHomeHero .name,
+.VPHomeHero .text {
+  letter-spacing: 0;
+}
+
+.VPHomeHero .tagline {
+  max-width: 590px;
+  line-height: 1.75;
+}
+
+.VPHomeHero .image-bg {
+  display: none;
+}
+
+.VPHomeHero .image-container {
+  transform: none;
+}
+
+.VPHomeHero .image-src {
+  width: min(320px, 72vw);
+  height: min(320px, 72vw);
+  border-radius: 28px;
+  filter: drop-shadow(0 28px 52px rgba(2, 132, 199, 0.26));
+}
+
+.VPHomeHero .actions {
+  gap: 12px;
+}
+
+.VPHomeHero .action .VPButton {
+  border-radius: 8px;
+  padding: 0 22px;
+  font-weight: 700;
+}
+
+.VPHomeFeatures .container {
+  gap: 16px;
+}
+
+.VPHomeFeatures .item {
+  padding: 8px;
+}
+
+.VPHomeFeatures .box {
+  border-radius: 8px;
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.07);
+}
+
+.dark .VPHomeFeatures .box {
+  border-color: rgba(45, 212, 191, 0.16);
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26);
+}
+
+.VPHome .vp-doc {
+  max-width: 980px;
+  margin: 18px auto 0;
+  padding: 0 24px 64px;
+}
+
+.VPHome .vp-doc h2 {
+  margin-top: 40px;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 28px;
+  letter-spacing: 0;
 }
 
 .office-demo-page {

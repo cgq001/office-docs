@@ -26,7 +26,7 @@ outline: deep
 
 ## Reading Order
 
-1. Start with [Getting Started](/en/rich-text/getting-started)
-2. If you need multi-user editing, read [Collaboration](/en/rich-text/collaboration)
-3. Then read [API](/en/rich-text/api)
-4. Finally check [Demo](/en/rich-text/demo) and [Playground](/en/rich-text/playground)
+1. Start with [Getting Started](/en/office-word/getting-started)
+2. If you need multi-user editing, read [Collaboration](/en/office-word/collaboration)
+3. Then read [API](/en/office-word/api)
+4. Finally check [Demo](/en/office-word/demo) and [Playground](/en/office-word/playground)

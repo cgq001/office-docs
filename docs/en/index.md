@@ -5,13 +5,16 @@ hero:
   name: Norio 官方文档
   text: Documentation For Full-Scenario Online Editors
   tagline: Documentation for embeddable online editor products covering documents, rich text, collaboration, exports, presentations, and more.
+  image:
+    src: /assets/icon.png
+    alt: Norio
   actions:
     - theme: brand
       text: Explore 富文本
-      link: /en/rich-text/introduction
+      link: /en/office-word/introduction
     - theme: alt
       text: Get Started
-      link: /en/rich-text/getting-started
+      link: /en/office-word/getting-started
 
 features:
   - title: Product Matrix
@@ -35,7 +38,7 @@ The first product is `@norio-office/rich-text`, a rich text editor component des
 - Positioning: online document-style rich text editor
 - Technical base: `Vue 3 + Tiptap 3`
 - Core capabilities: editing, layout, preview, export, print, presentation, collaboration, local file block
-- Docs entry: [Start reading](/en/rich-text/introduction)
+- Docs entry: [Start reading](/en/office-word/introduction)
 
 ## Documentation Structure
 
