@@ -5,7 +5,7 @@ outline: deep
 
 # Demo 演示
 
-在线演示已经改成独立页面，不再嵌在文档正文容器里。
+在线演示是独立页面，不嵌在常规文档正文容器里。
 
 ## 进入演示
 
@@ -17,9 +17,32 @@ outline: deep
 
 - 真实挂载 `@norio-office/rich-text`
 - 可直接编辑文档内容
-- 支持导出 HTML、PDF、图片
-- 支持本地选择图片和视频进行回填演示
-- 支持插入示例文件块
+- 支持图片、视频、文件、本地文件卡片等内容块
+- 支持表格、公式、高亮块、倒计时、Markdown 导入等插入项
+- 支持只读预览模式、大纲、演示模式和全屏
+- 支持导出 HTML、PDF、图片和打印
+- 支持通过上传 hook 回填图片、视频和文件 URL
+
+## 典型接入片段
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { JSONContent } from '@tiptap/core'
+import { RichTextEditor } from '@norio-office/rich-text'
+import '@norio-office/rich-text/style.css'
+
+const content = ref<JSONContent | null>(null)
+</script>
+
+<template>
+  <RichTextEditor
+    v-model="content"
+    document-name="demo"
+    placeholder="请输入内容"
+  />
+</template>
+```
 
 ## 为什么单独拆页面
 
@@ -31,7 +54,7 @@ VitePress 的常规文档页会受到左侧边栏、右侧目录和正文宽度�
 
 ## 文档页保留什么
 
-这个页面保留为演示说明页，后续主要放：
+这个页面保留为演示说明页，主要放：
 
 - 演示入口
 - 场景说明
