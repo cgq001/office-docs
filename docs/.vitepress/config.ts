@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 
+const base = process.env.VITEPRESS_BASE ?? ''
+
 const officeWordSidebarZh = [
   {
     text: '富文本',
@@ -63,7 +65,7 @@ const officeExcelSidebarEn = [
 ]
 
 export default defineConfig({
-  base: '',
+  base,
   cleanUrls: true,
   lastUpdated: true,
   head: [
