@@ -1,0 +1,68 @@
+---
+title: FAQ
+outline: deep
+---
+
+# FAQ
+
+## Why Is The Component Not Visible
+
+`OfficeExcel` defaults to `width: 100%` and `height: 100%`. If the parent container has no explicit height, the component has no available height. Set a parent height or pass the `height` prop.
+
+```vue
+<div style="height: 640px">
+  <OfficeExcel v-model="workbook" />
+</div>
+```
+
+## Do I Need To Import Styles Manually
+
+The package entry imports default styles automatically:
+
+```ts
+import { OfficeExcel } from '@norio-office/office-excel'
+```
+
+If your build chain does not include the styles, import them explicitly:
+
+```ts
+import '@norio-office/office-excel/style.css'
+```
+
+## What Does `v-model` Bind
+
+It binds the full `OfficeExcelWorkbookSnapshot`. If `modelValue` is not provided on first mount, the component creates a default workbook and emits `update:modelValue`.
+
+## What Is The Difference Between `readonly` And `disabled`
+
+`readonly` is a view-only mode. It still allows selection, sheet switching, copy, and export, but blocks editing, formatting, and structural changes.
+
+`disabled` disables internal interaction and has higher priority.
+
+## How Do I Hide Import And Export
+
+```vue
+<OfficeExcel
+  v-model="workbook"
+  :permissions="{ import: false, export: false }"
+  :toolbar="{ hiddenCommands: ['download', 'import-data', 'export-image'] }"
+/>
+```
+
+## How Do I Save Data
+
+You can save the full `OfficeExcelWorkbookSnapshot`, call `exportJson()` / `getWorkbook()`, or call `serialize()` and persist the JSON string.
+
+## How Do I Read Plain Text
+
+```ts
+const activeSheetData = excelRef.value?.getActiveSheetData()
+const allSheetsText = excelRef.value?.getPlainText()
+const oneSheetText = excelRef.value?.getPlainText('sheet-id')
+```
+
+Plain text includes displayed cell text only. It does not include styles, merged cells, images, charts, or watermarks.
+
+## Does Collaboration Connect To A Server Directly
+
+No. The component only provides the frontend integration layer. Real WebSocket connection, broadcasting, persistence, and permission checks are handled by the host application.

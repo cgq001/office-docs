@@ -13,8 +13,8 @@ hero:
       text: Explore 富文本
       link: /en/rich-text/introduction
     - theme: alt
-      text: Get Started
-      link: /en/rich-text/getting-started
+      text: Explore Spreadsheet
+      link: /en/excel/introduction
 
 features:
   - title: Product Matrix
@@ -29,7 +29,7 @@ features:
 
 We are building a documentation site for full-scenario online editor products, including document editing, rich text editing, structured content editing, collaboration, exports, and presentation features.
 
-The first product is `@norio-office/rich-text`, a rich text editor component designed to feel close to an online document experience. More products will be added to this site later.
+The current product set includes `@norio-office/rich-text` and `@norio-office/office-excel`, covering document-style rich text editing and workbook-style spreadsheet editing.
 
 ## Current Product
 
@@ -39,6 +39,13 @@ The first product is `@norio-office/rich-text`, a rich text editor component des
 - Technical base: `Vue 3 + Tiptap 3`
 - Core capabilities: editing, layout, preview, export, print, presentation, collaboration, local file block
 - Docs entry: [Start reading](/en/rich-text/introduction)
+
+### Spreadsheet
+
+- Positioning: embeddable online spreadsheet editor
+- Technical base: `Vue 3`
+- Core capabilities: workbook editing, toolbar, permissions, Excel import/export, JSON snapshots, plain text reading
+- Docs entry: [Start reading](/en/excel/introduction)
 
 ## Documentation Structure
 

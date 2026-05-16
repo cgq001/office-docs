@@ -47,6 +47,21 @@ const officeExcelSidebarZh = [
   }
 ]
 
+const officeExcelSidebarEn = [
+  {
+    text: 'Spreadsheet',
+    items: [
+      { text: 'Introduction', link: '/en/excel/introduction' },
+      { text: 'Getting Started', link: '/en/excel/getting-started' },
+      { text: 'Collaboration', link: '/en/excel/collaboration' },
+      { text: 'API', link: '/en/excel/api' },
+      { text: 'Demo', link: '/en/excel/demo' },
+      { text: 'Playground', link: '/en/excel/playground' },
+      { text: 'FAQ', link: '/en/excel/faq' }
+    ]
+  }
+]
+
 export default defineConfig({
   base: '',
   cleanUrls: true,
@@ -96,11 +111,14 @@ export default defineConfig({
         siteTitle: 'Norio 官方文档',
         nav: [
           { text: 'Home', link: '/en/' },
-          { text: 'Office Word', link: '/en/rich-text/introduction' }
+          { text: 'Rich Text', link: '/en/rich-text/introduction' },
+          { text: 'Spreadsheet', link: '/en/excel/introduction' }
         ],
         sidebar: {
           '/en/rich-text/': officeWordSidebarEn,
-          '/en/office-word/': officeWordSidebarEn
+          '/en/office-word/': officeWordSidebarEn,
+          '/en/excel/': officeExcelSidebarEn,
+          '/en/office-excel/': officeExcelSidebarEn
         },
         socialLinks: [
           { icon: 'github', link: 'https://github.com/cgq001/office-docs' }
