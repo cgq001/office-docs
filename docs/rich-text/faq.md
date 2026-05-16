@@ -67,7 +67,15 @@ import '@norio-office/rich-text/style.css'
 
 ## 协同模式为什么不能依赖 `modelValue` 初始化
 
-协同模式下的真实数据源是 `Yjs` 文档。组件仍会 emit JSON 快照，但外部 `modelValue` 的变化不会再反向写入编辑器。如果要给房间预置内容，应在编辑器挂载前先写入 `Y.Doc`，或者由服务端进行初始化。
+协同模式下的真实数据源是 `Yjs` 文档。组件仍会 emit JSON 快照，但外部 `modelValue` 的变化不会再反向写入编辑器。
+
+默认情况下组件不会把 `modelValue` 写入空的协同 fragment。如果是后端已有 Yjs 快照，必须以快照为准，不要传 `initializeContent: true`。如果是全新的空房间，业务侧先确认当前客户端拥有初始化权，再传 `initializeContent: true` 和 `initialContent`。
+
+## 富文本协同的 `documentType` 用什么
+
+统一协同服务里当前富文本组件的类型是 `rich`。不要把它作为未来 Word 组件的 `documentType=word` 接入。
+
+同一个协同房间里的所有客户端必须使用同一个 `field`，普通一文档一编辑器场景固定用 `content`。
 
 ## 随包 Yjs 服务适合生产吗
 

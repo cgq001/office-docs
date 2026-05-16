@@ -46,6 +46,38 @@ import RichTextEditor, {
 
 白名单 props 不传时表示启用全部内置项；传入数组后，仅数组里的项目会显示并可用。
 
+## 协同配置
+
+```ts
+interface RichTextEditorCollaborationUser {
+  name: string
+  color: string
+  userId?: string
+  clientUniqueCode?: string
+  [key: string]: unknown
+}
+
+interface RichTextEditorCollaborationOptions {
+  document: RichTextEditorCollaborationDocument
+  field?: string
+  provider?: RichTextEditorCollaborationProvider | null
+  user?: RichTextEditorCollaborationUser | null
+  initializeContent?: boolean
+  initialContent?: JSONContent | null
+}
+```
+
+| 字段 | 说明 |
+| --- | --- |
+| `document` | 外部创建的 `Y.Doc`。 |
+| `field` | Yjs fragment 名称，同一房间内所有客户端必须一致，普通场景固定用 `content`。 |
+| `provider` | 外部协同 provider，例如 `y-websocket`。传入后可显示远程光标和选区。 |
+| `user` | 当前用户信息；同一用户多窗口时 `clientUniqueCode` 必须不同。 |
+| `initializeContent` | 是否由当前客户端把 `initialContent` 写入空协同 fragment。只有全新空房间且当前客户端拥有初始化权时才传 `true`。 |
+| `initialContent` | 初始化内容。后端已有 Yjs 快照时不要传初始化内容。 |
+
+统一协同服务接入时，富文本的 `documentType` 使用 `rich`，不要使用预留给未来 Word 组件的 `word`。
+
 ## 水印配置
 
 ```ts

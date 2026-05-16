@@ -34,6 +34,69 @@ import {
 | `backgroundImages` | `OfficeExcelBackgroundImage[]` | `[]` | External background image list. |
 | `collaboration` | `OfficeExcelCollaborationOptions \| null` | `null` | Optional collaboration configuration. |
 
+## Collaboration
+
+```ts
+type OfficeExcelCollaborationRole = 'owner' | 'editor' | 'commenter' | 'viewer'
+
+interface OfficeExcelCollaborationUser {
+  userId?: string
+  displayName: string
+  color?: string
+}
+
+interface OfficeExcelCollaborationOptions {
+  enabled?: boolean
+  mode?: 'server-authoritative'
+  workbookId?: string
+  clientId?: string
+  token?: string
+  endpoint?: string
+  role?: OfficeExcelCollaborationRole
+  document?: unknown
+  provider?: OfficeExcelCollaborationProvider | null
+  user?: OfficeExcelCollaborationUser | null
+  submitCommand?: (envelope: OfficeExcelCollaborationCommandEnvelope) =>
+    void | OfficeExcelCollaborationCommandResult | Promise<void | OfficeExcelCollaborationCommandResult>
+  uploadAsset?: (file: File, context: OfficeExcelAssetContext) => Promise<OfficeExcelAssetReference>
+  resolveAsset?: (asset: OfficeExcelAssetReference, context: OfficeExcelAssetContext) => Promise<OfficeExcelResolvedAsset>
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `enabled` | Enables the collaboration integration. When false, the component runs as a local single-user spreadsheet. |
+| `workbookId` | Stable workbook or room ID. Keep it identical for all clients opening the same file. |
+| `clientId` | Stable client instance ID. The same user opening two windows must use two different values. |
+| `document` | External `Y.Doc`. The component writes the workbook mirror into it and reads remote Yjs updates back. |
+| `provider` | External Yjs provider. The component uses `provider.awareness` for remote selections and online user state. |
+| `submitCommand` | Submits local semantic commands to the backend. It can return `command.ack` or `command.reject`. |
+| `uploadAsset` | Uploads large assets such as images in collaboration mode. Avoid writing base64 blobs directly into Y.Doc. |
+| `resolveAsset` | Resolves asset references into real binary content when exporting `.xlsx`. |
+
+```ts
+interface OfficeExcelCollaborationCommandAck {
+  type: 'command.ack'
+  requestId: string
+  opId?: string
+  workbookId: string
+  accepted: true
+  serverSeq?: number
+}
+
+interface OfficeExcelCollaborationCommandReject {
+  type: 'command.reject'
+  requestId: string
+  opId?: string
+  workbookId: string
+  accepted: false
+  code: 'INVALID_COMMAND' | 'STALE_TARGET' | 'CONFLICT' | 'SERVER_ERROR'
+  reason: string
+}
+```
+
+Return standard `command.reject` results to the component instead of throwing. The component clears pending state, rolls back the optimistic local change, and emits `collaboration-command-reject`.
+
 ## Toolbar
 
 ```ts
@@ -100,6 +163,9 @@ interface OfficeExcelPermissions {
 | `after-export` | `OfficeExcelAfterExportPayload` | After Excel export succeeds. |
 | `before-import` | `OfficeExcelBeforeImportPayload` | Before Excel import starts. |
 | `after-import` | `OfficeExcelAfterImportPayload` | After Excel import succeeds. |
+| `collaboration-command-ack` | `OfficeExcelCollaborationCommandAck` | A collaboration command is accepted by the server. |
+| `collaboration-command-reject` | `OfficeExcelCollaborationCommandReject` | A collaboration command is rejected and optimistic local changes are rolled back. |
+| `collaboration-error` | `OfficeExcelErrorPayload` | Collaboration command submission or asset handling fails unexpectedly. |
 
 ## Instance API
 
@@ -115,6 +181,7 @@ interface OfficeExcelPublicApi {
   load: (snapshot: string | OfficeExcelWorkbookSnapshot, options?: OfficeExcelLoadWorkbookOptions) => void
   getSelection: () => OfficeExcelSelectionRange
   setSelection: (selection: OfficeExcelSelectionRange) => void
+  applyCollaborationCommandResult: (result: OfficeExcelCollaborationCommandResult) => void
   getPlainText: {
     (): OfficeExcelPlainTextSheetData[]
     (sheetId: string): string[][]

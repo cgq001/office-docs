@@ -18,6 +18,38 @@ outline: deep
 - `placeholder?: string`
 - `collaboration?: RichTextEditorCollaborationOptions | null`
 
+## Collaboration Options
+
+```ts
+interface RichTextEditorCollaborationUser {
+  name: string
+  color: string
+  userId?: string
+  clientUniqueCode?: string
+  [key: string]: unknown
+}
+
+interface RichTextEditorCollaborationOptions {
+  document: RichTextEditorCollaborationDocument
+  field?: string
+  provider?: RichTextEditorCollaborationProvider | null
+  user?: RichTextEditorCollaborationUser | null
+  initializeContent?: boolean
+  initialContent?: JSONContent | null
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `document` | External `Y.Doc`. |
+| `field` | Yjs fragment name. All clients in the same room must use the same value; normal usage keeps it as `content`. |
+| `provider` | External collaboration provider such as `y-websocket`. Required for remote cursors and selections. |
+| `user` | Current user info. The same user opening multiple windows must use different `clientUniqueCode` values. |
+| `initializeContent` | Lets this client write `initialContent` into an empty collaborative fragment. Use only for a brand-new empty room when this client owns initialization. |
+| `initialContent` | Initial JSON content. Do not pass this when the backend already has a Yjs snapshot. |
+
+Use `documentType: 'rich'` with the unified collaboration service. `word` is reserved for a future dedicated Word component.
+
 ## Messages
 
 The editor UI stays in Chinese by default. Use `messages` to override only the keys you need.

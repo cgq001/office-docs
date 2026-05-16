@@ -207,6 +207,8 @@ interface OfficeExcelBackgroundImage {
 
 ### collaboration
 
+用于接入多人协同。组件本身不内置固定服务端，也不直接创建 WebSocket；宿主需要把 `Y.Doc`、`y-websocket` provider、当前用户、命令提交函数传进来。这样组件可以适配私有部署、业务鉴权、文件服务、网关和不同后端实现。
+
 ```ts
 type OfficeExcelCollaborationRole = 'owner' | 'editor' | 'commenter' | 'viewer'
 
@@ -227,35 +229,120 @@ interface OfficeExcelCollaborationOptions {
   document?: unknown
   provider?: OfficeExcelCollaborationProvider | null
   user?: OfficeExcelCollaborationUser | null
-  submitCommand?: (envelope: OfficeExcelCollaborationCommandEnvelope) => void | Promise<void>
+  submitCommand?: (envelope: OfficeExcelCollaborationCommandEnvelope) =>
+    void | OfficeExcelCollaborationCommandResult | Promise<void | OfficeExcelCollaborationCommandResult>
+  uploadAsset?: (file: File, context: OfficeExcelAssetContext) => Promise<OfficeExcelAssetReference>
+  resolveAsset?: (asset: OfficeExcelAssetReference, context: OfficeExcelAssetContext) => Promise<OfficeExcelResolvedAsset>
 }
 ```
+
+`OfficeExcelCollaborationRole` 取值：
+
+| 值 | 中文说明 | 建议用途 |
+| --- | --- | --- |
+| `owner` | 所有者 | 文档创建者或最高权限用户。组件只记录该值，不内置权限判断。 |
+| `editor` | 编辑者 | 可编辑内容的普通协作者。业务侧可用它决定是否允许编辑。 |
+| `commenter` | 评论者 | 预留给只批注、不改正文的角色。当前表格组件不内置批注权限。 |
+| `viewer` | 查看者 | 只读查看角色。业务侧通常应同时传 `readonly` 或 `disabled` 控制交互。 |
 
 `OfficeExcelCollaborationUser` 字段：
 
 | 字段 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `userId` | `string` | `undefined` | 当前用户业务 ID。用于协同层区分用户。 |
-| `displayName` | `string` | 必填 | 当前用户展示名。远端选区、协同状态可用它展示用户身份。 |
-| `color` | `string` | 组件生成默认色 | 当前用户协同颜色，建议传十六进制颜色。 |
+| `userId` | `string` | `undefined` | 当前登录用户的业务 ID，例如数据库用户 ID。用于区分“谁在编辑”。同一个用户打开多个窗口时，`userId` 可以相同，但 `clientId` 应不同。 |
+| `displayName` | `string` | 必填 | 当前用户展示名，例如 `张三`。远端选区、在线用户、协同状态展示会使用它。 |
+| `color` | `string` | 组件生成默认色 | 当前用户在远端选区中的标识颜色，建议传稳定的十六进制颜色，例如 `#3b82f6`。 |
 
 `OfficeExcelCollaborationOptions` 字段：
 
 | 字段 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `enabled` | `boolean` | `false` | 是否开启协同前端接入。未开启时组件按单人模式运行。 |
-| `mode` | `'server-authoritative'` | `server-authoritative` | 协同模式。当前设计为服务端权威命令流。 |
-| `workbookId` | `string` | `undefined` | 工作簿业务 ID。协同时建议必传且保持稳定。 |
-| `clientId` | `string` | `undefined` | 当前客户端 ID。用于区分不同浏览器、设备或连接。 |
-| `token` | `string` | `undefined` | 预留鉴权 token，组件本身不直接请求服务端。 |
-| `endpoint` | `string` | `undefined` | 预留服务端地址，组件本身不直接连接。 |
-| `role` | `'owner' \| 'editor' \| 'commenter' \| 'viewer'` | `undefined` | 当前用户协同角色。业务侧可用来控制权限。 |
-| `document` | `unknown` | `undefined` | 外部传入的 Y.Doc。开启协同时用于维护本地文档镜像。 |
-| `provider` | `OfficeExcelCollaborationProvider \| null` | `null` | 外部 Yjs provider，可提供 awareness 用于远端选区展示。 |
-| `user` | `OfficeExcelCollaborationUser \| null` | `null` | 当前协同用户信息。 |
-| `submitCommand` | `(envelope) => void \| Promise<void>` | `undefined` | 本地命令提交回调。组件会把本地编辑转换成 envelope 交给业务协同层。 |
+| `enabled` | `boolean` | `false` | 是否开启协同接入。`false` 时组件按单人本地模式运行，不显示协同相关 UI，也不会提交协同命令。 |
+| `mode` | `'server-authoritative'` | `server-authoritative` | 协同模式。当前公开模式是“服务端权威命令流”：组件生成语义命令，宿主提交到服务端，服务端落到权威 Y.Doc 后同步给其他客户端。 |
+| `workbookId` | `string` | `undefined` | 工作簿业务 ID，也可以直接使用协同房间 ID。必须稳定，刷新页面、重连、多人打开同一文件时应保持一致。 |
+| `clientId` | `string` | `undefined` | 当前客户端实例 ID。用于区分浏览器 tab、桌面端实例或移动端设备。同一个用户开两个窗口时，应传两个不同的 `clientId`。 |
+| `token` | `string` | `undefined` | 业务鉴权 token 的透传字段。组件本身不会用它请求服务端，但宿主的 `submitCommand`、`uploadAsset`、`resolveAsset` 可以读取同一份 token。 |
+| `endpoint` | `string` | `undefined` | 协同服务地址的透传字段。组件本身不会自动连接该地址；建议宿主自己创建 provider，并在 `submitCommand` 中使用后端 HTTP 地址。 |
+| `role` | `'owner' \| 'editor' \| 'commenter' \| 'viewer'` | `undefined` | 当前用户协同角色。组件只记录角色，不替业务系统做权限判断；需要只读时请配合 `readonly`、`disabled` 或 `permissions`。 |
+| `document` | `unknown` | `undefined` | 外部创建的 `Y.Doc`。组件会把工作簿镜像写入该文档，并监听远端 Yjs 更新回投到本地表格。开启协同时建议必传。 |
+| `provider` | `OfficeExcelCollaborationProvider \| null` | `null` | 外部创建的 Yjs provider。组件主要读取 `provider.awareness`，用于同步远端选区、在线用户和编辑状态。 |
+| `user` | `OfficeExcelCollaborationUser \| null` | `null` | 当前协同用户信息。建议协同时必传，方便远端选区和在线状态展示。 |
+| `submitCommand` | `(envelope) => void \| OfficeExcelCollaborationCommandResult \| Promise<void \| OfficeExcelCollaborationCommandResult>` | `undefined` | 本地命令提交函数。组件会把编辑、样式、行列、sheet 等操作转换成 `envelope` 交给该函数。返回 `command.ack` 表示服务端确认；返回 `command.reject` 表示服务端拒绝；抛错会被组件视为 `SERVER_ERROR`。 |
+| `uploadAsset` | `(file, context) => Promise<OfficeExcelAssetReference>` | `undefined` | 协同模式下上传图片、导入图片、背景图或水印等大资源。协同模式不建议把 base64 大对象直接写进 Y.Doc，所以插入图片时必须配置该函数。 |
+| `resolveAsset` | `(asset, context) => Promise<OfficeExcelResolvedAsset>` | `undefined` | 协同模式导出 `.xlsx` 时，把资源引用解析成真实图片内容。组件拿到图片内容后会内嵌到 Excel 文件中，保证 WPS 和 Microsoft Excel 离线打开也能看到图片。 |
+
+`OfficeExcelCollaborationProvider` / `awareness` 字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `provider.awareness` | `OfficeExcelCollaborationAwareness \| null` | Yjs provider 的 awareness 对象。组件用它广播本地用户状态，并读取其他客户端状态。 |
+| `awareness.clientID` | `number` | Yjs awareness 当前连接 ID。可用于区分同一用户的多个连接。 |
+| `awareness.getStates()` | `() => Map<number, unknown>` | 读取所有在线客户端的 awareness 状态。组件用它生成远端用户列表和远端选区。 |
+| `awareness.setLocalStateField(field, value)` | `function` | 写入当前客户端的局部状态。组件会写入 Office Excel 的协同状态。 |
+| `awareness.on('update', callback)` | `function` | 监听 awareness 更新。远端用户选区、编辑状态变化时会触发。 |
+| `awareness.off('update', callback)` | `function` | 移除 awareness 更新监听。组件卸载时会清理。 |
 
 协同关闭时组件按单人本地模式运行。协同开启时组件不会直接连接服务端，而是通过 `submitCommand` 把稳定 ID 命令交给外部接入层。
+
+协同资源字段：
+
+```ts
+interface OfficeExcelAssetReference {
+  assetId: string
+  url: string
+  name?: string
+  mimeType?: string
+  width?: number
+  height?: number
+}
+
+interface OfficeExcelAssetContext {
+  kind: 'image' | 'background-image' | 'watermark' | 'import-image'
+  workbookId?: string
+  sheetId?: string
+  fileName?: string | null
+}
+
+type OfficeExcelResolvedAsset = Blob | ArrayBuffer | ArrayBufferView | string
+```
+
+`OfficeExcelAssetReference` 字段：
+
+| 字段 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `assetId` | `string` | 是 | 业务文件服务返回的资源 ID。协同文档中保存这个 ID，后续导出或展示时可用它换回真实文件。 |
+| `url` | `string` | 是 | 当前可访问的资源地址。可以是长期 URL、短期签名 URL 或业务网关地址。 |
+| `name` | `string` | 否 | 原始文件名或展示名，例如 `logo.png`。用于导出和调试。 |
+| `mimeType` | `string` | 否 | 文件 MIME 类型，例如 `image/png`、`image/jpeg`。建议上传接口返回，方便导出判断格式。 |
+| `width` | `number` | 否 | 图片原始宽度，单位通常为像素。组件可用于还原图片尺寸。 |
+| `height` | `number` | 否 | 图片原始高度，单位通常为像素。组件可用于还原图片尺寸。 |
+
+`OfficeExcelAssetContext` 字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `kind` | `'image' \| 'background-image' \| 'watermark' \| 'import-image'` | 资源用途。`image` 是插入图片，`background-image` 是背景图，`watermark` 是水印，`import-image` 是导入 Excel 时解析出的图片。 |
+| `workbookId` | `string` | 当前工作簿 ID。宿主上传时可以作为业务归属字段。 |
+| `sheetId` | `string` | 当前工作表 ID。资源属于某张 sheet 时会传入。 |
+| `fileName` | `string \| null` | 导入或上传时的源文件名。没有文件名时可能为空。 |
+
+`OfficeExcelResolvedAsset` 允许返回：
+
+| 返回类型 | 说明 |
+| --- | --- |
+| `Blob` | 推荐浏览器端返回值，适合从 `fetch` 直接读取图片。 |
+| `ArrayBuffer` | 二进制图片内容。 |
+| `ArrayBufferView` | 例如 `Uint8Array`。 |
+| `string` | data URL 或可解析的图片字符串。 |
+
+资源处理规则：
+
+- 非协同模式继续使用组件原来的图片插入和导出逻辑。
+- 协同模式插入图片时，组件会调用 `uploadAsset`，并只把 `assetId` / `url` 等引用写入工作簿。
+- 协同模式导入 Excel 时，如果文件里包含图片，组件也会调用 `uploadAsset` 把导入图片转换成资源引用。
+- 协同模式导出 `.xlsx` 时，组件会调用 `resolveAsset` 把引用解析成真实图片内容，再内嵌到 Excel 文件里，保证 WPS / Microsoft Excel 离线打开也能识别图片。
+- `uploadAsset` 返回值必须包含 `assetId` 和 `url`。
+- 如果业务文件服务需要 `token`、`roomId`、`userId` 等字段，请在宿主的 `uploadAsset` / `resolveAsset` 闭包里自行组合，不要改变组件传入的 `OfficeExcelAssetContext` 类型。
 
 ## Events API
 
@@ -947,9 +1034,14 @@ import type {
   NumberFormat,
   OfficeExcelActiveSheetChangePayload,
   OfficeExcelBackgroundImage,
+  OfficeExcelAssetContext,
+  OfficeExcelAssetReference,
   OfficeExcelCell,
   OfficeExcelChangePayload,
+  OfficeExcelCollaborationCommandAck,
   OfficeExcelCollaborationCommandEnvelope,
+  OfficeExcelCollaborationCommandReject,
+  OfficeExcelCollaborationCommandResult,
   OfficeExcelCollaborationOptions,
   OfficeExcelDownloadJsonOptions,
   OfficeExcelErrorPayload,
@@ -963,6 +1055,7 @@ import type {
   OfficeExcelProps,
   OfficeExcelPublicApi,
   OfficeExcelReadyPayload,
+  OfficeExcelResolvedAsset,
   OfficeExcelSelectionRange,
   OfficeExcelSheet,
   OfficeExcelToolbarOptions,

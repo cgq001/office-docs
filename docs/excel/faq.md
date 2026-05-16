@@ -131,11 +131,25 @@ excelRef.value?.load(savedSnapshotJson, {
 
 ## 协同模式会直接连接服务端吗
 
-不会。当前版本提供协同前端接入层，本地命令会通过 `submitCommand` 交给外部服务。真实 WebSocket 服务端、广播、持久化、权限校验由宿主项目接入。
+不会。当前版本提供协同前端接入层，宿主需要自己创建 `Y.Doc`、`y-websocket` provider，并实现 `submitCommand` 对接后端 HTTP 命令接口。真实 WebSocket 服务端、HTTP 命令接口、业务鉴权、持久化、冲突处理和文件服务都由宿主项目接入。
 
 ## 协同接入时哪些 ID 要稳定
 
-`workbookId` 和 `clientId` 应保持稳定。服务端建议按 `requestId` / `opId` 做幂等。外部 provider 如果提供 Yjs awareness，组件会用于远端选区展示。
+`workbookId` 和 `clientId` 应保持稳定。同一个工作簿多人打开时 `workbookId` / `roomId` 必须一致；同一个用户开两个窗口时，`clientId` 或 `clientUniqueCode` 必须不同。
+
+服务端建议按 `requestId` 做幂等，`opId` 用于操作追踪。外部 provider 如果提供 Yjs awareness，组件会用于远端选区展示。
+
+## `submitCommand` 返回 reject 时要 throw 吗
+
+不要。`command.reject` 是正常业务拒绝，应直接返回给组件。组件会清理 pending 状态、回滚本地乐观修改，并触发 `collaboration-command-reject` 事件。
+
+只有网络异常、服务端异常这类非业务拒绝，才建议 `throw`，组件会按 `SERVER_ERROR` 处理。
+
+## 协同模式为什么需要 `uploadAsset` 和 `resolveAsset`
+
+协同模式下不建议把图片、背景图、水印等大资源以 base64 直接写入 `Y.Doc`。业务侧应通过 `uploadAsset` 上传资源并写入资源引用。
+
+导出 `.xlsx` 时，组件会通过 `resolveAsset` 把资源引用解析成真实图片内容，再内嵌到 Excel 文件中，保证 WPS 和 Microsoft Excel 离线打开也能看到图片。
 
 ## 数据结构可以手动拼吗
 

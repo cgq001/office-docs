@@ -65,4 +65,14 @@ Plain text includes displayed cell text only. It does not include styles, merged
 
 ## Does Collaboration Connect To A Server Directly
 
-No. The component only provides the frontend integration layer. Real WebSocket connection, broadcasting, persistence, and permission checks are handled by the host application.
+No. The component only provides the frontend integration layer. The host application creates the `Y.Doc`, creates the `y-websocket` provider, implements the HTTP command endpoint used by `submitCommand`, and handles authentication, persistence, conflict handling, and asset storage.
+
+## How Should Command Rejection Be Handled
+
+Return a standard `command.reject` result from `submitCommand` instead of throwing for normal business rejection. The component will clear pending state, roll back the optimistic local change, and emit `collaboration-command-reject`.
+
+Use thrown errors for unexpected failures such as network errors or backend exceptions.
+
+## Why Are `uploadAsset` And `resolveAsset` Needed
+
+In collaboration mode, large image-like assets should not be written into Y.Doc as base64. Use `uploadAsset` to upload images, background images, or watermarks to your business asset service, and use `resolveAsset` to turn asset references back into real binary content when exporting `.xlsx`.
