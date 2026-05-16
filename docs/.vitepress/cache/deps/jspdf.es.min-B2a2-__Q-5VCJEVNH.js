@@ -3,12 +3,12 @@ import {
 } from "./chunk-U7VLGIGV.js";
 import {
   c
-} from "./chunk-TXYAHY7X.js";
+} from "./chunk-SFUH22UB.js";
 import {
   __publicField
-} from "./chunk-EQCVQC35.js";
+} from "./chunk-KEXKKQVW.js";
 
-// node_modules/@norio-office/rich-text/dist/jspdf.es.min-ByaXFVjc.js
+// node_modules/@norio-office/rich-text/dist/jspdf.es.min-B2a2-__Q.js
 var n = Uint8Array;
 var r = Uint16Array;
 var i = Int32Array;
@@ -936,14 +936,14 @@ var pt = (e4) => {
   ft || (ft = (et(), true)), e4.l_desc = new Ge(e4.dyn_ltree, He), e4.d_desc = new Ge(e4.dyn_dtree, Ue), e4.bl_desc = new Ge(e4.bl_tree, We), e4.bi_buf = 0, e4.bi_valid = 0, tt(e4);
 };
 var mt = (e4, t, n2, r2) => {
-  Je(e4, (me << 1) + (r2 ? 1 : 0), 3), nt(e4), qe(e4, n2), qe(e4, ~n2), n2 && e4.pending_buf.set(e4.window.subarray(t, t + n2), e4.pending), e4.pending += n2;
+  Je(e4, (me << 1) + +!!r2, 3), nt(e4), qe(e4, n2), qe(e4, ~n2), n2 && e4.pending_buf.set(e4.window.subarray(t, t + n2), e4.pending), e4.pending += n2;
 };
 var ht = {
   _tr_init: pt,
   _tr_stored_block: mt,
   _tr_flush_block: (e4, t, n2, r2) => {
     let i2, a2, o2 = 0;
-    e4.level > 0 ? (e4.strm.data_type === fe && (e4.strm.data_type = dt(e4)), ot(e4, e4.l_desc), ot(e4, e4.d_desc), o2 = lt(e4), i2 = e4.opt_len + 3 + 7 >>> 3, a2 = e4.static_len + 3 + 7 >>> 3, a2 <= i2 && (i2 = a2)) : i2 = a2 = n2 + 5, n2 + 4 <= i2 && t !== -1 ? mt(e4, t, n2, r2) : e4.strategy === le || a2 === i2 ? (Je(e4, (he << 1) + (r2 ? 1 : 0), 3), at(e4, Ie, Le)) : (Je(e4, (ge << 1) + (r2 ? 1 : 0), 3), ut(e4, e4.l_desc.max_code + 1, e4.d_desc.max_code + 1, o2 + 1), at(e4, e4.dyn_ltree, e4.dyn_dtree)), tt(e4), r2 && nt(e4);
+    e4.level > 0 ? (e4.strm.data_type === fe && (e4.strm.data_type = dt(e4)), ot(e4, e4.l_desc), ot(e4, e4.d_desc), o2 = lt(e4), i2 = e4.opt_len + 3 + 7 >>> 3, a2 = e4.static_len + 3 + 7 >>> 3, a2 <= i2 && (i2 = a2)) : i2 = a2 = n2 + 5, n2 + 4 <= i2 && t !== -1 ? mt(e4, t, n2, r2) : e4.strategy === le || a2 === i2 ? (Je(e4, (he << 1) + +!!r2, 3), at(e4, Ie, Le)) : (Je(e4, (ge << 1) + +!!r2, 3), ut(e4, e4.l_desc.max_code + 1, e4.d_desc.max_code + 1, o2 + 1), at(e4, e4.dyn_ltree, e4.dyn_dtree)), tt(e4), r2 && nt(e4);
   },
   _tr_tally: (e4, t, n2) => (e4.pending_buf[e4.sym_buf + e4.sym_next++] = t, e4.pending_buf[e4.sym_buf + e4.sym_next++] = t >> 8, e4.pending_buf[e4.sym_buf + e4.sym_next++] = n2, t === 0 ? e4.dyn_ltree[n2 * 2]++ : (e4.matches++, t--, e4.dyn_ltree[(ze[n2] + be + 1) * 2]++, e4.dyn_dtree[Ke(t) * 2]++), e4.sym_next === e4.sym_end),
   _tr_align: (e4) => {
@@ -1106,9 +1106,9 @@ var Tn = (e4, t) => {
   let n2 = e4.pending_buf_size - 5 > e4.w_size ? e4.w_size : e4.pending_buf_size - 5, r2, i2, a2, o2 = 0, s2 = e4.strm.avail_in;
   do {
     if (r2 = 65535, a2 = e4.bi_valid + 42 >> 3, e4.strm.avail_out < a2 || (a2 = e4.strm.avail_out - a2, i2 = e4.strstart - e4.block_start, r2 > i2 + e4.strm.avail_in && (r2 = i2 + e4.strm.avail_in), r2 > a2 && (r2 = a2), r2 < n2 && (r2 === 0 && t !== Ot || t === Et || r2 !== i2 + e4.strm.avail_in))) break;
-    o2 = t === Ot && r2 === i2 + e4.strm.avail_in ? 1 : 0, St(e4, 0, 0, o2), e4.pending_buf[e4.pending - 4] = r2, e4.pending_buf[e4.pending - 3] = r2 >> 8, e4.pending_buf[e4.pending - 2] = ~r2, e4.pending_buf[e4.pending - 1] = ~r2 >> 8, yn(e4.strm), i2 && (i2 > r2 && (i2 = r2), e4.strm.output.set(e4.window.subarray(e4.block_start, e4.block_start + i2), e4.strm.next_out), e4.strm.next_out += i2, e4.strm.avail_out -= i2, e4.strm.total_out += i2, e4.block_start += i2, r2 -= i2), r2 && (Sn(e4.strm, e4.strm.output, e4.strm.next_out, r2), e4.strm.next_out += r2, e4.strm.avail_out -= r2, e4.strm.total_out += r2);
+    o2 = +(t === Ot && r2 === i2 + e4.strm.avail_in), St(e4, 0, 0, o2), e4.pending_buf[e4.pending - 4] = r2, e4.pending_buf[e4.pending - 3] = r2 >> 8, e4.pending_buf[e4.pending - 2] = ~r2, e4.pending_buf[e4.pending - 1] = ~r2 >> 8, yn(e4.strm), i2 && (i2 > r2 && (i2 = r2), e4.strm.output.set(e4.window.subarray(e4.block_start, e4.block_start + i2), e4.strm.next_out), e4.strm.next_out += i2, e4.strm.avail_out -= i2, e4.strm.total_out += i2, e4.block_start += i2, r2 -= i2), r2 && (Sn(e4.strm, e4.strm.output, e4.strm.next_out, r2), e4.strm.next_out += r2, e4.strm.avail_out -= r2, e4.strm.total_out += r2);
   } while (o2 === 0);
-  return s2 -= e4.strm.avail_in, s2 && (s2 >= e4.w_size ? (e4.matches = 2, e4.window.set(e4.strm.input.subarray(e4.strm.next_in - e4.w_size, e4.strm.next_in), 0), e4.strstart = e4.w_size, e4.insert = e4.strstart) : (e4.window_size - e4.strstart <= s2 && (e4.strstart -= e4.w_size, e4.window.set(e4.window.subarray(e4.w_size, e4.w_size + e4.strstart), 0), e4.matches < 2 && e4.matches++, e4.insert > e4.strstart && (e4.insert = e4.strstart)), e4.window.set(e4.strm.input.subarray(e4.strm.next_in - s2, e4.strm.next_in), e4.strstart), e4.strstart += s2, e4.insert += s2 > e4.w_size - e4.insert ? e4.w_size - e4.insert : s2), e4.block_start = e4.strstart), e4.high_water < e4.strstart && (e4.high_water = e4.strstart), o2 ? fn : t !== Et && t !== Ot && e4.strm.avail_in === 0 && e4.strstart === e4.block_start ? un : (a2 = e4.window_size - e4.strstart, e4.strm.avail_in > a2 && e4.block_start >= e4.w_size && (e4.block_start -= e4.w_size, e4.strstart -= e4.w_size, e4.window.set(e4.window.subarray(e4.w_size, e4.w_size + e4.strstart), 0), e4.matches < 2 && e4.matches++, a2 += e4.w_size, e4.insert > e4.strstart && (e4.insert = e4.strstart)), a2 > e4.strm.avail_in && (a2 = e4.strm.avail_in), a2 && (Sn(e4.strm, e4.window, e4.strstart, a2), e4.strstart += a2, e4.insert += a2 > e4.w_size - e4.insert ? e4.w_size - e4.insert : a2), e4.high_water < e4.strstart && (e4.high_water = e4.strstart), a2 = e4.bi_valid + 42 >> 3, a2 = e4.pending_buf_size - a2 > 65535 ? 65535 : e4.pending_buf_size - a2, n2 = a2 > e4.w_size ? e4.w_size : a2, i2 = e4.strstart - e4.block_start, (i2 >= n2 || (i2 || t === Ot) && t !== Et && e4.strm.avail_in === 0 && i2 <= a2) && (r2 = i2 > a2 ? a2 : i2, o2 = t === Ot && e4.strm.avail_in === 0 && r2 === i2 ? 1 : 0, St(e4, e4.block_start, r2, o2), e4.block_start += r2, yn(e4.strm)), o2 ? dn : ln);
+  return s2 -= e4.strm.avail_in, s2 && (s2 >= e4.w_size ? (e4.matches = 2, e4.window.set(e4.strm.input.subarray(e4.strm.next_in - e4.w_size, e4.strm.next_in), 0), e4.strstart = e4.w_size, e4.insert = e4.strstart) : (e4.window_size - e4.strstart <= s2 && (e4.strstart -= e4.w_size, e4.window.set(e4.window.subarray(e4.w_size, e4.w_size + e4.strstart), 0), e4.matches < 2 && e4.matches++, e4.insert > e4.strstart && (e4.insert = e4.strstart)), e4.window.set(e4.strm.input.subarray(e4.strm.next_in - s2, e4.strm.next_in), e4.strstart), e4.strstart += s2, e4.insert += s2 > e4.w_size - e4.insert ? e4.w_size - e4.insert : s2), e4.block_start = e4.strstart), e4.high_water < e4.strstart && (e4.high_water = e4.strstart), o2 ? fn : t !== Et && t !== Ot && e4.strm.avail_in === 0 && e4.strstart === e4.block_start ? un : (a2 = e4.window_size - e4.strstart, e4.strm.avail_in > a2 && e4.block_start >= e4.w_size && (e4.block_start -= e4.w_size, e4.strstart -= e4.w_size, e4.window.set(e4.window.subarray(e4.w_size, e4.w_size + e4.strstart), 0), e4.matches < 2 && e4.matches++, a2 += e4.w_size, e4.insert > e4.strstart && (e4.insert = e4.strstart)), a2 > e4.strm.avail_in && (a2 = e4.strm.avail_in), a2 && (Sn(e4.strm, e4.window, e4.strstart, a2), e4.strstart += a2, e4.insert += a2 > e4.w_size - e4.insert ? e4.w_size - e4.insert : a2), e4.high_water < e4.strstart && (e4.high_water = e4.strstart), a2 = e4.bi_valid + 42 >> 3, a2 = e4.pending_buf_size - a2 > 65535 ? 65535 : e4.pending_buf_size - a2, n2 = a2 > e4.w_size ? e4.w_size : a2, i2 = e4.strstart - e4.block_start, (i2 >= n2 || (i2 || t === Ot) && t !== Et && e4.strm.avail_in === 0 && i2 <= a2) && (r2 = i2 > a2 ? a2 : i2, o2 = +(t === Ot && e4.strm.avail_in === 0 && r2 === i2), St(e4, e4.block_start, r2, o2), e4.block_start += r2, yn(e4.strm)), o2 ? dn : ln);
 };
 var En = (e4, t) => {
   let n2, r2;
@@ -1201,7 +1201,7 @@ function Nn() {
 var Pn = (e4) => {
   if (!e4) return 1;
   let t = e4.state;
-  return !t || t.strm !== e4 || t.status !== en && t.status !== tn && t.status !== nn && t.status !== rn && t.status !== an && t.status !== on && t.status !== sn && t.status !== cn ? 1 : 0;
+  return +(!t || t.strm !== e4 || t.status !== en && t.status !== tn && t.status !== nn && t.status !== rn && t.status !== an && t.status !== on && t.status !== sn && t.status !== cn);
 };
 var Fn = (e4) => {
   if (Pn(e4)) return mn(e4, Mt);
@@ -1242,7 +1242,7 @@ var zn = {
       if (r3 = n2.strategy >= Lt || n2.level < 2 ? 0 : n2.level < 6 ? 1 : n2.level === 6 ? 2 : 3, t2 |= r3 << 6, n2.strstart !== 0 && (t2 |= $t), t2 += 31 - t2 % 31, xn(n2, t2), n2.strstart !== 0 && (xn(n2, e4.adler >>> 16), xn(n2, e4.adler & 65535)), e4.adler = 1, n2.status = sn, yn(e4), n2.pending !== 0) return n2.last_flush = -1, At;
     }
     if (n2.status === tn) {
-      if (e4.adler = 0, Y(n2, 31), Y(n2, 139), Y(n2, 8), n2.gzhead) Y(n2, (n2.gzhead.text ? 1 : 0) + (n2.gzhead.hcrc ? 2 : 0) + (n2.gzhead.extra ? 4 : 0) + (n2.gzhead.name ? 8 : 0) + (n2.gzhead.comment ? 16 : 0)), Y(n2, n2.gzhead.time & 255), Y(n2, n2.gzhead.time >> 8 & 255), Y(n2, n2.gzhead.time >> 16 & 255), Y(n2, n2.gzhead.time >> 24 & 255), Y(n2, n2.level === 9 ? 2 : n2.strategy >= Lt || n2.level < 2 ? 4 : 0), Y(n2, n2.gzhead.os & 255), n2.gzhead.extra && n2.gzhead.extra.length && (Y(n2, n2.gzhead.extra.length & 255), Y(n2, n2.gzhead.extra.length >> 8 & 255)), n2.gzhead.hcrc && (e4.adler = vt(e4.adler, n2.pending_buf, n2.pending, 0)), n2.gzindex = 0, n2.status = nn;
+      if (e4.adler = 0, Y(n2, 31), Y(n2, 139), Y(n2, 8), n2.gzhead) Y(n2, +!!n2.gzhead.text + (n2.gzhead.hcrc ? 2 : 0) + (n2.gzhead.extra ? 4 : 0) + (n2.gzhead.name ? 8 : 0) + (n2.gzhead.comment ? 16 : 0)), Y(n2, n2.gzhead.time & 255), Y(n2, n2.gzhead.time >> 8 & 255), Y(n2, n2.gzhead.time >> 16 & 255), Y(n2, n2.gzhead.time >> 24 & 255), Y(n2, n2.level === 9 ? 2 : n2.strategy >= Lt || n2.level < 2 ? 4 : 0), Y(n2, n2.gzhead.os & 255), n2.gzhead.extra && n2.gzhead.extra.length && (Y(n2, n2.gzhead.extra.length & 255), Y(n2, n2.gzhead.extra.length >> 8 & 255)), n2.gzhead.hcrc && (e4.adler = vt(e4.adler, n2.pending_buf, n2.pending, 0)), n2.gzindex = 0, n2.status = nn;
       else if (Y(n2, 0), Y(n2, 0), Y(n2, 0), Y(n2, 0), Y(n2, 0), Y(n2, n2.level === 9 ? 2 : n2.strategy >= Lt || n2.level < 2 ? 4 : 0), Y(n2, pn), n2.status = sn, yn(e4), n2.pending !== 0) return n2.last_flush = -1, At;
     }
     if (n2.status === nn) {
@@ -1774,7 +1774,7 @@ function bi() {
 var xi = (e4) => {
   if (!e4) return 1;
   let t = e4.state;
-  return !t || t.strm !== e4 || t.mode < Rr || t.mode > hi ? 1 : 0;
+  return +(!t || t.strm !== e4 || t.mode < Rr || t.mode > hi);
 };
 var Si = (e4) => {
   if (xi(e4)) return Nr;
@@ -4661,7 +4661,7 @@ function Z(e4) {
         n4
       ];
     })), s3 = D3(e5), e5 = [];
-    for (var Ce3, we3, Te3, De3 = Array.isArray(s3[0]) ? 1 : 0, Oe3 = "", ke3 = function(e6, t, n4) {
+    for (var Ce3, we3, Te3, De3 = +!!Array.isArray(s3[0]), Oe3 = "", ke3 = function(e6, t, n4) {
       var r4 = "";
       return n4 instanceof K2 ? (n4 = typeof i3.angle == "number" ? Be2(n4, new K2(1, 0, 0, 1, e6, t)) : Be2(new K2(1, 0, 0, 1, e6, t), n4), x2 === b2 && (n4 = Be2(new K2(1, 0, 0, -1, 0, 0), n4)), r4 = n4.join(" ") + " Tm\n") : r4 = T2(e6) + " " + T2(t) + " Td\n", r4;
     }, Ae3 = 0; Ae3 < s3.length; Ae3++) {
@@ -10067,7 +10067,7 @@ function qs(e4) {
     }
     function _n2(e6, t2, n3, r3, i3, a3) {
       for (; 0 < i3--; ) {
-        var o3, s3 = e6, c5 = t2 + (n3 ? 1 : 0), l4 = e6, u4 = t2 + (n3 ? 0 : 3);
+        var o3, s3 = e6, c5 = t2 + +!!n3, l4 = e6, u4 = t2 + (n3 ? 0 : 3);
         for (o3 = 0; o3 < r3; ++o3) {
           var d4 = l4[u4 + 4 * o3];
           d4 != 255 && (d4 *= 32897, s3[c5 + 4 * o3 + 0] = s3[c5 + 4 * o3 + 0] * d4 >> 23, s3[c5 + 4 * o3 + 1] = s3[c5 + 4 * o3 + 1] * d4 >> 23, s3[c5 + 4 * o3 + 2] = s3[c5 + 4 * o3 + 2] * d4 >> 23);
@@ -15129,7 +15129,7 @@ function qs(e4) {
                             var d5 = e7.gd[s4][l5], f5 = u5;
                             if (c6.Pc && (f5 += c6.vd[0], l5 && (f5 += c6.od[0])), 0 < (f5 = 0 > f5 ? 0 : 63 < f5 ? 63 : f5)) {
                               var p4 = f5;
-                              0 < c6.wb && (p4 = 4 < c6.wb ? p4 >> 2 : p4 >> 1) > 9 - c6.wb && (p4 = 9 - c6.wb), 1 > p4 && (p4 = 1), d5.dd = p4, d5.tc = 2 * f5 + p4, d5.ld = 40 <= f5 ? 2 : 15 <= f5 ? 1 : 0;
+                              0 < c6.wb && (p4 = 4 < c6.wb ? p4 >> 2 : p4 >> 1) > 9 - c6.wb && (p4 = 9 - c6.wb), 1 > p4 && (p4 = 1), d5.dd = p4, d5.tc = 2 * f5 + p4, d5.ld = 40 <= f5 ? 2 : +(15 <= f5);
                             } else d5.tc = 0;
                             d5.La = l5;
                           }
@@ -16325,14 +16325,14 @@ function Ys() {
   }, e4.allowFsRead = void 0, e4.loadImageFile = e4.loadFile;
 }(Z.API), function(n2) {
   function r2() {
-    return (X.html2canvas ? Promise.resolve(X.html2canvas) : import("./html2canvas-Bwmq6fGh-3AUSECG5.js").then((t) => c(t.default))).catch(function(e4) {
+    return (X.html2canvas ? Promise.resolve(X.html2canvas) : import("./html2canvas-CmV4ppBE-JSYRNQZE.js").then((t) => c(t.default))).catch(function(e4) {
       return Promise.reject(Error("Could not load html2canvas: " + e4));
     }).then(function(e4) {
       return e4.default ? e4.default : e4;
     });
   }
   function i2() {
-    return (X.DOMPurify ? Promise.resolve(X.DOMPurify) : import("./purify.es-B5ixYH9L-6DEYYWIO.js")).catch(function(e4) {
+    return (X.DOMPurify ? Promise.resolve(X.DOMPurify) : import("./purify.es-jA1o6Tcu-5H5CX3NE.js")).catch(function(e4) {
       return Promise.reject(Error("Could not load dompurify: " + e4));
     }).then(function(e4) {
       return e4.default ? e4.default : e4;
@@ -17491,7 +17491,7 @@ function Ys() {
     ignoreAnimation: true,
     ignoreDimensions: true
   }, d2 = this;
-  return (X.canvg ? Promise.resolve(X.canvg) : import("./index.es-C4X5YiRo-R53SXVTS.js")).catch(function(e5) {
+  return (X.canvg ? Promise.resolve(X.canvg) : import("./index.es-D5dDjrL4-FUUJGXDP.js")).catch(function(e5) {
     return Promise.reject(Error("Could not load canvg: " + e5));
   }).then(function(e5) {
     return e5.default ? e5.default : e5;
@@ -18068,8 +18068,8 @@ function Ys() {
       if (function(e7, t3) {
         if (t3) for (var n5 = 0; n5 < e7.length; n5++) t3[n5] = n5;
         a2 === void 0 && (a2 = y(e7)), s2 === void 0 && (s2 = y(e7));
-      }(e6, t2), i2 || !o2 || s2) if (i2 && o2 && a2 ^ s2) _ = a2 ? 1 : 0, e6 = x2(e6, t2, n4);
-      else if (!i2 && o2 && s2) _ = a2 ? 1 : 0, e6 = w2(e6, t2, n4), e6 = x2(e6, t2);
+      }(e6, t2), i2 || !o2 || s2) if (i2 && o2 && a2 ^ s2) _ = +!!a2, e6 = x2(e6, t2, n4);
+      else if (!i2 && o2 && s2) _ = +!!a2, e6 = w2(e6, t2, n4), e6 = x2(e6, t2);
       else if (!i2 || a2 || o2 || s2) {
         if (i2 && !o2 && a2 ^ s2) e6 = x2(e6, t2), a2 ? (_ = 0, e6 = w2(e6, t2, n4)) : (_ = 1, e6 = w2(e6, t2, n4), e6 = x2(e6, t2));
         else if (i2 && a2 && !o2 && s2) _ = 1, e6 = w2(e6, t2, n4), e6 = x2(e6, t2);
@@ -18078,7 +18078,7 @@ function Ys() {
           a2 ? (_ = 1, e6 = w2(e6, t2, n4), _ = 0, c3 = false, e6 = w2(e6, t2, n4), c3 = r3) : (_ = 0, e6 = w2(e6, t2, n4), e6 = x2(e6, t2), _ = 1, c3 = false, e6 = w2(e6, t2, n4), c3 = r3, e6 = x2(e6, t2));
         }
       } else _ = 0, e6 = w2(e6, t2, n4);
-      else _ = a2 ? 1 : 0, e6 = w2(e6, t2, n4);
+      else _ = +!!a2, e6 = w2(e6, t2, n4);
       return e6;
     }, this.__bidiEngine__.setOptions = function(e6) {
       e6 && (i2 = e6.isInputVisual, o2 = e6.isOutputVisual, a2 = e6.isInputRtl, s2 = e6.isOutputRtl, c3 = e6.isSymmetricSwapping);
@@ -18591,4 +18591,4 @@ export {
   Z as default,
   Z as jsPDF
 };
-//# sourceMappingURL=jspdf.es.min-ByaXFVjc-SFIKO7QV.js.map
+//# sourceMappingURL=jspdf.es.min-B2a2-__Q-5VCJEVNH.js.map

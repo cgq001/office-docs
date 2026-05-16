@@ -1,9 +1,9 @@
 import {
   o
-} from "./chunk-TXYAHY7X.js";
-import "./chunk-EQCVQC35.js";
+} from "./chunk-SFUH22UB.js";
+import "./chunk-KEXKKQVW.js";
 
-// node_modules/@norio-office/rich-text/dist/html2canvas-Bwmq6fGh.js
+// node_modules/@norio-office/rich-text/dist/html2canvas-CmV4ppBE.js
 var t = o((e, t2) => {
   (function(n, r) {
     typeof e == "object" && t2 !== void 0 ? t2.exports = r() : typeof define == "function" && define.amd ? define(r) : (n = typeof globalThis < "u" ? globalThis : n || self, n.html2canvas = r());
@@ -2332,7 +2332,7 @@ var t = o((e, t2) => {
       function e3(e4, t4) {
         this.animationDuration = G(e4, Sa, t4.animationDuration), this.backgroundClip = G(e4, Er, t4.backgroundClip), this.backgroundColor = G(e4, Dr, t4.backgroundColor), this.backgroundImage = G(e4, Qr, t4.backgroundImage), this.backgroundOrigin = G(e4, $r, t4.backgroundOrigin), this.backgroundPosition = G(e4, ei, t4.backgroundPosition), this.backgroundRepeat = G(e4, ti, t4.backgroundRepeat), this.backgroundSize = G(e4, ii, t4.backgroundSize), this.borderTopColor = G(e4, si, t4.borderTopColor), this.borderRightColor = G(e4, ci, t4.borderRightColor), this.borderBottomColor = G(e4, li, t4.borderBottomColor), this.borderLeftColor = G(e4, ui, t4.borderLeftColor), this.borderTopLeftRadius = G(e4, fi, t4.borderTopLeftRadius), this.borderTopRightRadius = G(e4, pi, t4.borderTopRightRadius), this.borderBottomRightRadius = G(e4, mi, t4.borderBottomRightRadius), this.borderBottomLeftRadius = G(e4, hi, t4.borderBottomLeftRadius), this.borderTopStyle = G(e4, _i, t4.borderTopStyle), this.borderRightStyle = G(e4, vi, t4.borderRightStyle), this.borderBottomStyle = G(e4, yi, t4.borderBottomStyle), this.borderLeftStyle = G(e4, bi, t4.borderLeftStyle), this.borderTopWidth = G(e4, Si, t4.borderTopWidth), this.borderRightWidth = G(e4, Ci, t4.borderRightWidth), this.borderBottomWidth = G(e4, wi, t4.borderBottomWidth), this.borderLeftWidth = G(e4, Ti, t4.borderLeftWidth), this.boxShadow = G(e4, Ta, t4.boxShadow), this.color = G(e4, Ei, t4.color), this.direction = G(e4, Di, t4.direction), this.display = G(e4, Oi, t4.display), this.float = G(e4, Ai, t4.cssFloat), this.fontFamily = G(e4, ma, t4.fontFamily), this.fontSize = G(e4, ha, t4.fontSize), this.fontStyle = G(e4, va, t4.fontStyle), this.fontVariant = G(e4, _a, t4.fontVariant), this.fontWeight = G(e4, ga, t4.fontWeight), this.letterSpacing = G(e4, ji, t4.letterSpacing), this.lineBreak = G(e4, Ni, t4.lineBreak), this.lineHeight = G(e4, Pi, t4.lineHeight), this.listStyleImage = G(e4, Ii, t4.listStyleImage), this.listStylePosition = G(e4, Li, t4.listStylePosition), this.listStyleType = G(e4, Ri, t4.listStyleType), this.marginTop = G(e4, Bi, t4.marginTop), this.marginRight = G(e4, Vi, t4.marginRight), this.marginBottom = G(e4, Hi, t4.marginBottom), this.marginLeft = G(e4, Ui, t4.marginLeft), this.opacity = G(e4, da, t4.opacity);
         var n2 = G(e4, Wi, t4.overflow);
-        this.overflowX = n2[0], this.overflowY = n2[n2.length > 1 ? 1 : 0], this.overflowWrap = G(e4, Gi, t4.overflowWrap), this.paddingTop = G(e4, qi, t4.paddingTop), this.paddingRight = G(e4, Ji, t4.paddingRight), this.paddingBottom = G(e4, Yi, t4.paddingBottom), this.paddingLeft = G(e4, Xi, t4.paddingLeft), this.paintOrder = G(e4, Ea, t4.paintOrder), this.position = G(e4, Qi, t4.position), this.textAlign = G(e4, Zi, t4.textAlign), this.textDecorationColor = G(e4, fa, t4.textDecorationColor ?? t4.color), this.textDecorationLine = G(e4, pa, t4.textDecorationLine ?? t4.textDecoration), this.textShadow = G(e4, $i, t4.textShadow), this.textTransform = G(e4, ea, t4.textTransform), this.transform = G(e4, ta, t4.transform), this.transformOrigin = G(e4, aa, t4.transformOrigin), this.visibility = G(e4, oa, t4.visibility), this.webkitTextStrokeColor = G(e4, Da, t4.webkitTextStrokeColor), this.webkitTextStrokeWidth = G(e4, Oa, t4.webkitTextStrokeWidth), this.wordBreak = G(e4, ca, t4.wordBreak), this.zIndex = G(e4, la, t4.zIndex);
+        this.overflowX = n2[0], this.overflowY = n2[+(n2.length > 1)], this.overflowWrap = G(e4, Gi, t4.overflowWrap), this.paddingTop = G(e4, qi, t4.paddingTop), this.paddingRight = G(e4, Ji, t4.paddingRight), this.paddingBottom = G(e4, Yi, t4.paddingBottom), this.paddingLeft = G(e4, Xi, t4.paddingLeft), this.paintOrder = G(e4, Ea, t4.paintOrder), this.position = G(e4, Qi, t4.position), this.textAlign = G(e4, Zi, t4.textAlign), this.textDecorationColor = G(e4, fa, t4.textDecorationColor ?? t4.color), this.textDecorationLine = G(e4, pa, t4.textDecorationLine ?? t4.textDecoration), this.textShadow = G(e4, $i, t4.textShadow), this.textTransform = G(e4, ea, t4.textTransform), this.transform = G(e4, ta, t4.transform), this.transformOrigin = G(e4, aa, t4.transformOrigin), this.visibility = G(e4, oa, t4.visibility), this.webkitTextStrokeColor = G(e4, Da, t4.webkitTextStrokeColor), this.webkitTextStrokeWidth = G(e4, Oa, t4.webkitTextStrokeWidth), this.wordBreak = G(e4, ca, t4.wordBreak), this.zIndex = G(e4, la, t4.zIndex);
       }
       return e3.prototype.isVisible = function() {
         return this.display > 0 && this.opacity > 0 && this.visibility === 0;
@@ -4412,8 +4412,8 @@ var t = o((e, t2) => {
     return Dl;
   });
 });
-var html2canvas_Bwmq6fGh_default = t();
+var html2canvas_CmV4ppBE_default = t();
 export {
-  html2canvas_Bwmq6fGh_default as default
+  html2canvas_CmV4ppBE_default as default
 };
-//# sourceMappingURL=html2canvas-Bwmq6fGh-3AUSECG5.js.map
+//# sourceMappingURL=html2canvas-CmV4ppBE-JSYRNQZE.js.map

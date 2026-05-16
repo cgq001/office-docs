@@ -10,7 +10,7 @@ const officeWordSidebarZh = [
       { text: 'API', link: '/rich-text/api' },
       { text: 'Demo 演示', link: '/rich-text/demo' },
       { text: '在线演示', link: '/rich-text/playground' },
-      { text: 'npm 发布', link: '/rich-text/npm-publish' },
+      // { text: 'npm 发布', link: '/rich-text/npm-publish' },
       { text: '常见问题', link: '/rich-text/faq' }
     ]
   }
@@ -28,6 +28,21 @@ const officeWordSidebarEn = [
       { text: 'Playground', link: '/en/rich-text/playground' },
       { text: 'NPM Publish', link: '/en/rich-text/npm-publish' },
       { text: 'FAQ', link: '/en/rich-text/faq' }
+    ]
+  }
+]
+
+const officeExcelSidebarZh = [
+  {
+    text: '表格',
+    items: [
+      { text: '介绍', link: '/excel/introduction' },
+      { text: '快速开始', link: '/excel/getting-started' },
+      { text: '协同接入', link: '/excel/collaboration' },
+      { text: 'API', link: '/excel/api' },
+      { text: 'Demo 演示', link: '/excel/demo' },
+      { text: '在线演示', link: '/excel/playground' },
+      { text: '常见问题', link: '/excel/faq' }
     ]
   }
 ]
@@ -51,11 +66,13 @@ export default defineConfig({
         siteTitle: 'Norio 官方文档',
         nav: [
           { text: '首页', link: '/' },
-          { text: '富文本', link: '/rich-text/introduction' }
+          { text: '富文本', link: '/rich-text/introduction' },
+          { text: '表格', link: '/excel/introduction' }
         ],
         sidebar: {
           '/rich-text/': officeWordSidebarZh,
-          '/office-word/': officeWordSidebarZh
+          '/office-word/': officeWordSidebarZh,
+          '/excel/': officeExcelSidebarZh
         },
         socialLinks: [
           { icon: 'github', link: 'https://github.com/cgq001/office-docs' }

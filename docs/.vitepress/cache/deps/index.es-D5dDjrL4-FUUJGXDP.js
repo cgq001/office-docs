@@ -4,10 +4,10 @@ import {
 import {
   c,
   o
-} from "./chunk-TXYAHY7X.js";
-import "./chunk-EQCVQC35.js";
+} from "./chunk-SFUH22UB.js";
+import "./chunk-KEXKKQVW.js";
 
-// node_modules/@norio-office/rich-text/dist/index.es-C4X5YiRo.js
+// node_modules/@norio-office/rich-text/dist/index.es-D5dDjrL4.js
 var r = o((e15, t) => {
   var n = function(e16) {
     return e16 && e16.Math === Math && e16;
@@ -6144,4 +6144,4 @@ export {
   _r as vectorsAngle,
   gr as vectorsRatio
 };
-//# sourceMappingURL=index.es-C4X5YiRo-R53SXVTS.js.map
+//# sourceMappingURL=index.es-D5dDjrL4-FUUJGXDP.js.map

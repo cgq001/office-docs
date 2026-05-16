@@ -109,13 +109,22 @@
 }
 
 .playground-page .VPContent {
-  flex: 0 0 auto;
+  box-sizing: border-box;
+  height: 100vh;
   padding-top: var(--vp-nav-height);
+  overflow: hidden;
 }
 
 .playground-page .VPPage {
-  /* height: calc(100vh - var(--vp-nav-height) - 12px); */
-  /* overflow: hidden; */
+  height: calc(100vh - var(--vp-nav-height));
+  overflow: hidden;
+}
+
+.playground-page .vp-doc {
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 .playground-page .VPFooter {
@@ -125,6 +134,7 @@
 .office-demo-page {
   box-sizing: border-box;
   height: 100%;
+  min-height: 0;
   background:
     radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 30%),
     linear-gradient(180deg, #f3f8f7 0%, #ffffff 100%);
@@ -163,6 +173,7 @@
   overflow: hidden;
   background: var(--vp-c-bg);
   box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+  height: calc(100vh - 64px - 16px);
 }
 
 .office-editor-demo__frame .rich-text-editor {
@@ -203,6 +214,20 @@
   gap: 8px;
   padding: 24px;
   color: #b91c1c;
+}
+
+.office-excel-demo__frame {
+  position: relative;
+}
+
+.office-excel-demo__frame .norio-office-excel {
+  height: 100%;
+  min-height: 0;
+}
+
+.office-excel-demo__frame .norio-office-excel__main,
+.office-excel-demo__frame .norio-office-excel__sheet {
+  min-height: 0;
 }
 
 @media (max-width: 960px) {
