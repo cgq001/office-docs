@@ -7,6 +7,7 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
+    "docs:build:github": "node scripts/build-github-pages.mjs",
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {

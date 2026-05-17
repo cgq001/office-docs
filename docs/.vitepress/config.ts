@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 const base = process.env.VITEPRESS_BASE ?? ''
+const withBase = (path: string) => `${base || '/'}${path}`.replace(/\/{2,}/g, '/')
 
 const officeWordSidebarZh = [
   {
@@ -69,7 +70,7 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   head: [
-    ['link', { rel: 'icon', href: '/assets/icon256.ico' }],
+    ['link', { rel: 'icon', href: withBase('assets/icon256.ico') }],
     ['meta', { name: 'theme-color', content: '#0f766e' }]
   ],
   locales: {

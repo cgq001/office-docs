@@ -25,12 +25,12 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Verify prebuilt site
-        run: test -f docs/.vitepress/dist/index.html
+        run: test -f docs/.vitepress/dist-github/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: docs/.vitepress/dist-github
 
   deploy:
     environment:
