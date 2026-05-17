@@ -65,7 +65,15 @@ Plain text includes displayed cell text only. It does not include styles, merged
 
 ## Does Collaboration Connect To A Server Directly
 
-No. The component only provides the frontend integration layer. The host application creates the `Y.Doc`, creates the `y-websocket` provider, implements the HTTP command endpoint used by `submitCommand`, and handles authentication, persistence, conflict handling, and asset storage.
+No. The component only provides the frontend integration layer. The host application creates the `Y.Doc` and the `y-websocket` provider. Spreadsheet semantic commands should normally reuse the same WebSocket through `createOfficeExcelYWebSocketCommandAdapter(provider)` and use the `messageType=100` command channel.
+
+Collaboration commands no longer use an HTTP command endpoint. HTTP can still be used for image, background, watermark, attachment, and other asset upload/download flows.
+
+## Which IDs Must Stay Stable In Collaboration
+
+`workbookId` / `roomId` must be identical for all users opening the same workbook. `clientId` / `clientUniqueCode` must be different when the same user opens multiple browser tabs.
+
+Use `requestId` for command idempotency and `opId` for operation tracing. Lock and claim features also use the same command channel; the backend should dispatch by `command.type`, such as `cell-lock.set`, `cell-lock.clear`, `cell-claim.acquire`, and `cell-claim.release`.
 
 ## How Should Command Rejection Be Handled
 

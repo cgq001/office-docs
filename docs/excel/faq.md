@@ -131,13 +131,17 @@ excelRef.value?.load(savedSnapshotJson, {
 
 ## 协同模式会直接连接服务端吗
 
-不会。当前版本提供协同前端接入层，宿主需要自己创建 `Y.Doc`、`y-websocket` provider，并实现 `submitCommand` 对接后端 HTTP 命令接口。真实 WebSocket 服务端、HTTP 命令接口、业务鉴权、持久化、冲突处理和文件服务都由宿主项目接入。
+不会。当前版本提供协同前端接入层，宿主需要自己创建 `Y.Doc` 和 `y-websocket` provider。Excel 语义命令推荐通过 `createOfficeExcelYWebSocketCommandAdapter(provider)` 复用同一条 WebSocket，以 `messageType=100` 的 command channel 提交到后端。真实 WebSocket 服务端、业务鉴权、持久化、冲突处理和文件服务都由宿主项目接入。
+
+协同命令不再走 HTTP command 接口。HTTP 仍可用于图片、背景图、水印、附件等资源上传下载。
 
 ## 协同接入时哪些 ID 要稳定
 
 `workbookId` 和 `clientId` 应保持稳定。同一个工作簿多人打开时 `workbookId` / `roomId` 必须一致；同一个用户开两个窗口时，`clientId` 或 `clientUniqueCode` 必须不同。
 
 服务端建议按 `requestId` 做幂等，`opId` 用于操作追踪。外部 provider 如果提供 Yjs awareness，组件会用于远端选区展示。
+
+锁定单元格、抢占单元格等协同能力也会走同一套命令通道。后端应按 `command.type` 分发，例如 `cell-lock.set`、`cell-lock.clear`、`cell-claim.acquire`、`cell-claim.release`。
 
 ## `submitCommand` 返回 reject 时要 throw 吗
 

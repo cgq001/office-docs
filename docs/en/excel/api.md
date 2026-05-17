@@ -10,6 +10,7 @@ outline: deep
 ```ts
 import {
   OfficeExcel,
+  createOfficeExcelYWebSocketCommandAdapter,
   type OfficeExcelPublicApi,
   type OfficeExcelWorkbookSnapshot,
 } from '@norio-office/office-excel'
@@ -69,8 +70,8 @@ interface OfficeExcelCollaborationOptions {
 | `workbookId` | Stable workbook or room ID. Keep it identical for all clients opening the same file. |
 | `clientId` | Stable client instance ID. The same user opening two windows must use two different values. |
 | `document` | External `Y.Doc`. The component writes the workbook mirror into it and reads remote Yjs updates back. |
-| `provider` | External Yjs provider. The component uses `provider.awareness` for remote selections and online user state. |
-| `submitCommand` | Submits local semantic commands to the backend. It can return `command.ack` or `command.reject`. |
+| `provider` | External Yjs provider. The component uses `provider.awareness` for remote selections and online user state; the command adapter can reuse its WebSocket. |
+| `submitCommand` | Submits local semantic commands to the backend. The recommended implementation is `commandAdapter.submitCommand(envelope)` from `createOfficeExcelYWebSocketCommandAdapter(provider)`. |
 | `uploadAsset` | Uploads large assets such as images in collaboration mode. Avoid writing base64 blobs directly into Y.Doc. |
 | `resolveAsset` | Resolves asset references into real binary content when exporting `.xlsx`. |
 
@@ -97,6 +98,8 @@ interface OfficeExcelCollaborationCommandReject {
 
 Return standard `command.reject` results to the component instead of throwing. The component clears pending state, rolls back the optimistic local change, and emits `collaboration-command-reject`.
 
+Collaboration commands use the WebSocket command channel, not an HTTP command endpoint. The built-in adapter sends a y-websocket-compatible binary message with `messageType=100` and a JSON command payload, then matches backend `command.ack` / `command.reject` responses by `requestId`. HTTP is still suitable for image, background, watermark, and attachment asset services.
+
 ## Toolbar
 
 ```ts
@@ -119,7 +122,9 @@ interface OfficeExcelToolbarOptions {
 
 Common tab IDs: `start`, `insert`, `data`, `formula`, `collab`, `view`, `efficiency`.
 
-Common command IDs include `copy`, `cut`, `paste`, `font-size`, `font-color`, `fill-color`, `bold`, `italic`, `underline`, `download`, `image`, `watermark`, `filter`, `sort`, `import-data`, `zoom`, `gridlines`, `background`, and `export-image`.
+Common command IDs include `copy`, `cut`, `paste`, `font-size`, `font-color`, `fill-color`, `bold`, `italic`, `underline`, `download`, `image`, `watermark`, `filter`, `sort`, `import-data`, `zoom`, `gridlines`, `background`, `export-image`, `collab-lock-cells`, and `collab-claim-cells`.
+
+Secondary collaboration command IDs include `collab-lock-selected-cells`, `collab-unlock-selected-cells`, `collab-enable-cell-claim`, `collab-release-selected-cell-claim`, `collab-disable-cell-claim-keep`, and `collab-disable-cell-claim-release`.
 
 ## Permissions
 

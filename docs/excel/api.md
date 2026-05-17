@@ -10,10 +10,12 @@ outline: deep
 ```ts
 import {
   OfficeExcel,
+  createOfficeExcelYWebSocketCommandAdapter,
   type OfficeExcelPublicApi,
   type OfficeExcelWorkbookSnapshot,
 } from '@norio-office/office-excel'
 ```
+
 ## Props
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -31,7 +33,7 @@ import {
 | `toolbar` | `OfficeExcelToolbarOptions \| null` | `null` | 工具栏可见性配置，可隐藏 tab 或命令，也可以只开放指定 tab/命令。 |
 | `permissions` | `OfficeExcelPermissions \| null` | `null` | 功能权限配置，例如导入、导出、编辑、增删 sheet、插入图片、插入图表、格式化。 |
 | `backgroundImages` | `OfficeExcelBackgroundImage[]` | `[]` | 外部传入的背景图列表。每项必须包含 `id`、`name`、`url`，缺字段会被忽略。 |
-| `collaboration` | `OfficeExcelCollaborationOptions \| null` | `null` | 可选协同配置。开启后组件维护 Yjs 文档镜像，并把本地命令转换成外部服务可消费的 command envelope。 |
+| `collaboration` | `OfficeExcelCollaborationOptions \| null` | `null` | 可选协同配置。开启后组件读取外部 Y.Doc 的权威工作簿状态，并把本地编辑转换成外部服务可消费的 command envelope。 |
 
 ### mode
 
@@ -116,11 +118,12 @@ interface OfficeExcelToolbarOptions {
 | `common-formula` / `financial-formula` / `logical-formula` | `formula` | 常用函数、财务函数、逻辑函数。 |
 | `text-formula` / `date-time-formula` / `lookup-reference-formula` | `formula` | 文本、日期时间、查找引用函数。 |
 | `math-trig-formula` / `statistical-formula` / `engineering-formula` / `information-formula` / `database-formula` | `formula` | 数学三角、统计、工程、信息、数据库函数。 |
+| `collab-lock-cells` / `collab-claim-cells` | `collab` | 协同锁定单元格、抢占单元格菜单。 |
 | `view-freeze` / `highlight-axis` / `zoom` | `view` | 查看模式下的冻结、高亮行列、缩放。 |
 | `gridlines` / `gridline-color` / `row-column-size` / `fullscreen` | `view` | 网格线、网格线颜色、行高列宽、全屏。 |
 | `background` / `export-image` | `efficiency` | 背景、导出图片。 |
 
-二级菜单命令也可以隐藏，例如 `sort-asc`、`sort-desc`、`filter-clear`、`freeze-first-row`、`view-freeze-clear`、`zoom-100`、`data-validation-clear` 等。函数菜单会按 `common-formula-SUM`、`logical-formula-IF` 这类格式生成。
+二级菜单命令也可以隐藏，例如 `sort-asc`、`sort-desc`、`filter-clear`、`freeze-first-row`、`view-freeze-clear`、`zoom-100`、`data-validation-clear` 等。协同菜单二级命令包括 `collab-lock-selected-cells`、`collab-unlock-selected-cells`、`collab-enable-cell-claim`、`collab-release-selected-cell-claim`、`collab-disable-cell-claim-keep`、`collab-disable-cell-claim-release`。函数菜单会按 `common-formula-SUM`、`logical-formula-IF` 这类格式生成。
 
 ### permissions
 
@@ -194,7 +197,7 @@ interface OfficeExcelBackgroundImage {
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `id` | `string` | 是 | 背景图唯一标识，用于记录当前 sheet 选择了哪张背景图。建议业务侧保持稳定，不要用会变化的临时 URL 当 id。 |
+| `id` | `string` | 是 | 背景图唯一标识，用于记录当前 sheet 选择了哪张背景图。建议业务侧使用长期稳定的业务 ID。 |
 | `name` | `string` | 是 | 背景图展示名称，会显示在背景选择弹层里，也会用于图片 `alt` 文本。 |
 | `url` | `string` | 是 | 背景图地址。可以是静态资源 import 后的 URL、远程图片 URL、base64 data URL 或对象地址。 |
 
@@ -262,13 +265,13 @@ interface OfficeExcelCollaborationOptions {
 | `workbookId` | `string` | `undefined` | 工作簿业务 ID，也可以直接使用协同房间 ID。必须稳定，刷新页面、重连、多人打开同一文件时应保持一致。 |
 | `clientId` | `string` | `undefined` | 当前客户端实例 ID。用于区分浏览器 tab、桌面端实例或移动端设备。同一个用户开两个窗口时，应传两个不同的 `clientId`。 |
 | `token` | `string` | `undefined` | 业务鉴权 token 的透传字段。组件本身不会用它请求服务端，但宿主的 `submitCommand`、`uploadAsset`、`resolveAsset` 可以读取同一份 token。 |
-| `endpoint` | `string` | `undefined` | 协同服务地址的透传字段。组件本身不会自动连接该地址；建议宿主自己创建 provider，并在 `submitCommand` 中使用后端 HTTP 地址。 |
+| `endpoint` | `string` | `undefined` | 协同服务地址的透传字段。组件本身不会自动连接该地址；建议宿主自己创建 provider，并在 `submitCommand` 中接入 WebSocket command channel。 |
 | `role` | `'owner' \| 'editor' \| 'commenter' \| 'viewer'` | `undefined` | 当前用户协同角色。组件只记录角色，不替业务系统做权限判断；需要只读时请配合 `readonly`、`disabled` 或 `permissions`。 |
-| `document` | `unknown` | `undefined` | 外部创建的 `Y.Doc`。组件会把工作簿镜像写入该文档，并监听远端 Yjs 更新回投到本地表格。开启协同时建议必传。 |
+| `document` | `unknown` | `undefined` | 外部创建的 `Y.Doc`。服务端权威协同时，组件会读取该文档中的权威工作簿状态，并监听远端 Yjs 更新回投到本地表格。开启协同时建议必传。 |
 | `provider` | `OfficeExcelCollaborationProvider \| null` | `null` | 外部创建的 Yjs provider。组件主要读取 `provider.awareness`，用于同步远端选区、在线用户和编辑状态。 |
 | `user` | `OfficeExcelCollaborationUser \| null` | `null` | 当前协同用户信息。建议协同时必传，方便远端选区和在线状态展示。 |
 | `submitCommand` | `(envelope) => void \| OfficeExcelCollaborationCommandResult \| Promise<void \| OfficeExcelCollaborationCommandResult>` | `undefined` | 本地命令提交函数。组件会把编辑、样式、行列、sheet 等操作转换成 `envelope` 交给该函数。返回 `command.ack` 表示服务端确认；返回 `command.reject` 表示服务端拒绝；抛错会被组件视为 `SERVER_ERROR`。 |
-| `uploadAsset` | `(file, context) => Promise<OfficeExcelAssetReference>` | `undefined` | 协同模式下上传图片、导入图片、背景图或水印等大资源。协同模式不建议把 base64 大对象直接写进 Y.Doc，所以插入图片时必须配置该函数。 |
+| `uploadAsset` | `(file, context) => Promise<OfficeExcelAssetReference>` | `undefined` | 协同模式下上传图片、导入图片、背景图或水印等大资源。插入图片时通过该函数保存真实文件，Y.Doc 中只保存资源引用。 |
 | `resolveAsset` | `(asset, context) => Promise<OfficeExcelResolvedAsset>` | `undefined` | 协同模式导出 `.xlsx` 时，把资源引用解析成真实图片内容。组件拿到图片内容后会内嵌到 Excel 文件中，保证 WPS 和 Microsoft Excel 离线打开也能看到图片。 |
 
 `OfficeExcelCollaborationProvider` / `awareness` 字段：
@@ -276,6 +279,9 @@ interface OfficeExcelCollaborationOptions {
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `provider.awareness` | `OfficeExcelCollaborationAwareness \| null` | Yjs provider 的 awareness 对象。组件用它广播本地用户状态，并读取其他客户端状态。 |
+| `provider.synced` | `boolean` | provider 是否已经完成首次服务端同步。组件会在协同初始化时读取它；如果同步后发现房间为空，会通过 `submitCommand` 发送 `workbook.initialize`，由后端决定是否初始化。 |
+| `provider.on('sync', callback)` | `function` | 监听 provider 首次同步状态。组件会等待 `synced === true` 后再判断是否需要初始化空房间。 |
+| `provider.off('sync', callback)` | `function` | 移除 provider 同步监听。组件卸载时会清理，避免重复监听。 |
 | `awareness.clientID` | `number` | Yjs awareness 当前连接 ID。可用于区分同一用户的多个连接。 |
 | `awareness.getStates()` | `() => Map<number, unknown>` | 读取所有在线客户端的 awareness 状态。组件用它生成远端用户列表和远端选区。 |
 | `awareness.setLocalStateField(field, value)` | `function` | 写入当前客户端的局部状态。组件会写入 Office Excel 的协同状态。 |
@@ -283,6 +289,55 @@ interface OfficeExcelCollaborationOptions {
 | `awareness.off('update', callback)` | `function` | 移除 awareness 更新监听。组件卸载时会清理。 |
 
 协同关闭时组件按单人本地模式运行。协同开启时组件不会直接连接服务端，而是通过 `submitCommand` 把稳定 ID 命令交给外部接入层。
+
+协同工具栏能力：
+
+| 能力 | 菜单项 | 说明 |
+| --- | --- | --- |
+| 锁定单元格 | `锁定当前选中的单元格` | 必须先选中一块区域。锁定成功后，其他用户不能编辑该区域；锁定区域内如果已经存在任何抢占单元格，锁定会失败并提示。 |
+| 取消锁定 | `取消当前选中的单元格` | 只能取消当前用户自己的锁定。支持部分取消，例如先锁定一大片，再选中其中一小片取消，组件会把剩余区域拆回新的锁定规则。 |
+| 开启抢占 | `开启抢占单元格` | 开启后，当前用户点击可操作单元格时会抢占该单元格。抢占成功后，该单元格归当前用户操作，其他用户不能选中或编辑。 |
+| 取消抢占 | `取消当前抢占单元格` | 只取消当前选区里属于当前用户的抢占单元格。 |
+| 关闭抢占并保留权限 | `关闭抢占单元格（保留抢占权限）` | 只关闭当前用户继续抢占的模式，已经抢占的单元格仍然保留。 |
+| 关闭抢占并释放权限 | `关闭抢占单元格（取消抢占权限）` | 关闭抢占模式，并释放当前用户在整个工作簿内已经抢占的单元格。 |
+
+锁定和抢占不会互相覆盖：锁定区域不能再被抢占，已抢占区域也不能被锁定。当前用户操作自己锁定或抢占的区域时不会重复提示；其他用户操作受限区域时，组件会提示该区域已被谁锁定或抢占。
+
+协同锁定 / 抢占状态会保存在每张工作表的 `cellLocks` 中：
+
+```ts
+type OfficeExcelCellAccessKind = 'lock' | 'claim'
+
+interface OfficeExcelCellAccessOwner {
+  userId?: string
+  clientId: string
+  displayName: string
+  color?: string
+}
+
+interface OfficeExcelCellAccessRule {
+  id: string
+  kind: OfficeExcelCellAccessKind
+  range: OfficeExcelSelectionRange
+  owner: OfficeExcelCellAccessOwner
+  createdAt: number
+  updatedAt?: number
+}
+```
+
+`OfficeExcelCellAccessRule` 字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `id` | `string` | 规则 ID。锁定、取消锁定、抢占、释放抢占都通过它定位规则。 |
+| `kind` | `'lock' \| 'claim'` | 规则类型。`lock` 表示锁定区域，`claim` 表示抢占单元格。 |
+| `range` | `OfficeExcelSelectionRange` | 规则覆盖的区域。锁定通常是一片区域，抢占通常是单个单元格。 |
+| `owner.userId` | `string` | 规则所属用户的业务用户 ID。建议后端按 WebSocket 连接上下文写入。 |
+| `owner.clientId` | `string` | 规则所属客户端实例 ID。建议使用 `clientUniqueCode`。 |
+| `owner.displayName` | `string` | 规则所属用户展示名。用于受限提示和覆盖层标签。 |
+| `owner.color` | `string` | 规则所属用户颜色。用于覆盖层背景和边框。 |
+| `createdAt` | `number` | 创建时间戳。 |
+| `updatedAt` | `number` | 更新时间戳。可选。 |
 
 协同资源字段：
 
@@ -342,7 +397,7 @@ type OfficeExcelResolvedAsset = Blob | ArrayBuffer | ArrayBufferView | string
 - 协同模式导入 Excel 时，如果文件里包含图片，组件也会调用 `uploadAsset` 把导入图片转换成资源引用。
 - 协同模式导出 `.xlsx` 时，组件会调用 `resolveAsset` 把引用解析成真实图片内容，再内嵌到 Excel 文件里，保证 WPS / Microsoft Excel 离线打开也能识别图片。
 - `uploadAsset` 返回值必须包含 `assetId` 和 `url`。
-- 如果业务文件服务需要 `token`、`roomId`、`userId` 等字段，请在宿主的 `uploadAsset` / `resolveAsset` 闭包里自行组合，不要改变组件传入的 `OfficeExcelAssetContext` 类型。
+- 如果业务文件服务需要 `token`、`roomId`、`userId` 等字段，请在宿主的 `uploadAsset` / `resolveAsset` 闭包里自行组合，并保持组件传入的 `OfficeExcelAssetContext` 类型稳定。
 
 ## Events API
 
@@ -362,6 +417,8 @@ type OfficeExcelResolvedAsset = Blob | ArrayBuffer | ArrayBufferView | string
 | `after-export` | `OfficeExcelAfterExportPayload` | 导出 Excel 成功后。 |
 | `before-import` | `OfficeExcelBeforeImportPayload` | 开始导入 Excel 前。 |
 | `after-import` | `OfficeExcelAfterImportPayload` | 导入 Excel 成功并替换工作簿后。 |
+| `collaboration-command-ack` | `OfficeExcelCollaborationCommandAck` | 协同命令被服务端确认。 |
+| `collaboration-command-reject` | `OfficeExcelCollaborationCommandReject` | 协同命令被服务端拒绝或 `submitCommand` 抛错。 |
 
 ```vue
 <OfficeExcel
@@ -514,6 +571,7 @@ interface OfficeExcelPublicApi {
   setWorkbook: (workbook: OfficeExcelWorkbookSnapshot, options?: OfficeExcelLoadWorkbookOptions) => void
   serialize: () => string
   load: (snapshot: string | OfficeExcelWorkbookSnapshot, options?: OfficeExcelLoadWorkbookOptions) => void
+  applyCollaborationCommandResult: (result: OfficeExcelCollaborationCommandResult) => void
   getSelection: () => OfficeExcelSelectionRange
   setSelection: (selection: OfficeExcelSelectionRange) => void
   getPlainText: {
@@ -534,6 +592,7 @@ interface OfficeExcelPublicApi {
 | `setWorkbook(workbook, options?)` | `workbook` 是完整快照；`options` 控制选区、历史和 change 来源。 | `void` | 用外部工作簿快照覆盖当前组件数据。 |
 | `serialize()` | 无 | `string` | 将当前工作簿序列化为 JSON 字符串，适合存入数据库或 localStorage。 |
 | `load(snapshot, options?)` | `snapshot` 是 JSON 字符串或完整快照；`options` 控制加载行为。 | `void` | 加载 JSON 字符串或工作簿快照。 |
+| `applyCollaborationCommandResult(result)` | `result` 是服务端返回的 command ack/reject。 | `void` | 协同命令结果回灌入口。异步 WebSocket 返回结果时调用；reject 会触发本地乐观修改回滚。 |
 | `getSelection()` | 无 | `OfficeExcelSelectionRange` | 获取当前选区。 |
 | `setSelection(selection)` | `selection` 是要设置的选区。 | `void` | 设置当前选区。 |
 | `getPlainText()` | 无 | `OfficeExcelPlainTextSheetData[]` | 获取整本工作簿所有工作表的纯文本二维数组。 |
@@ -597,6 +656,7 @@ await excelRef.value?.importExcel(buffer, {
 interface OfficeExcelExportExcelOptions {
   fileName?: string
   silent?: boolean
+  resolveAsset?: (asset: OfficeExcelAssetReference, context: OfficeExcelAssetContext) => Promise<OfficeExcelResolvedAsset>
 }
 ```
 
@@ -606,6 +666,7 @@ interface OfficeExcelExportExcelOptions {
 | --- | --- | --- | --- |
 | `fileName` | `string` | 当前工作簿标题、首个 sheet 名称或默认文件名 | 导出的 `.xlsx` 文件名。 |
 | `silent` | `boolean` | `false` | 是否关闭组件内成功/失败 toast。 |
+| `resolveAsset` | `(asset, context) => Promise<OfficeExcelResolvedAsset>` | `collaboration.resolveAsset` | 单次导出时覆盖协同资源解析方法，用于把图片引用下载并内嵌进 `.xlsx`。 |
 
 ```ts
 await excelRef.value?.exportExcel('客户数据.xlsx')
